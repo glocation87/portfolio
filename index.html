@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ryan Seales</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.css" rel="stylesheet" />
+
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-c.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-lua.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
+    <script src="https://kit.fontawesome.com/38967f8773.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+</head>
+<body class="bg-[#282a36] text-[#f8f8f2] font-['Fira_Code'] flex">
+    <canvas id="particle-bg" class="fixed top-0 left-0 w-full h-full z-0"></canvas>
+
+    <!--Topbar-->
+    <nav id="top-socials" class="glass-nav fixed top-0 left-52 right-0 h-14 flex justify-center items-center gap-8 z-50">
+        <a href="https://discord.com/users/cryphowns" target="_blank" class="social-link flex items-center gap-2 text-[#bd93f9]">
+            <i class="fab fa-discord text-xl"></i><span>Discord</span>
+        </a>
+        <a href="mailto:glocation87@gmail.com" class="social-link flex items-center gap-2 text-[#bd93f9]">
+            <i class="fas fa-envelope text-xl"></i><span>Email</span>
+        </a>
+        <a href="https://github.com/glocation87" target="_blank" class="social-link flex items-center gap-2 text-[#bd93f9]">
+            <i class="fab fa-github text-xl"></i><span>GitHub</span>
+        </a>
+        <a href="https://www.roblox.com/users/5281751970/profile" target="_blank" class="social-link flex items-center gap-2 text-[#bd93f9]">
+            <i class="fas fa-gamepad text-xl"></i><span>Roblox</span>
+        </a>
+    </nav>
+
+    <!--Sidebar-->
+    <nav id="sidebar" class="glass-nav fixed top-0 left-0 h-screen w-52 flex flex-col gap-3 p-5 z-51 ">
+        <h2 class="text-center text-[#bd93f9] font-bold text-lg mb-2">Navigation</h2>
+        <hr class="border-[#44475a]"/>
+        <a href="#top-socials"    class="nav-link text-[#bd93f9] rounded p-2">Contact</a>
+        <hr class="border-[#44475a] justify-center" width="60%" />
+        <a href="#about"    class="nav-link text-[#bd93f9] rounded p-2">About Me</a>
+        <a href="#resume"   class="nav-link text-[#bd93f9] rounded p-2">Resume</a>
+        <a href="#code-showcase" class="nav-link text-[#bd93f9] rounded p-2">Code Review</a>
+        <a href="#video-showcase" class="nav-link text-[#bd93f9] rounded p-2">Showcase</a>
+    </nav>
+
+    <!--Main Section-->
+    <div class="relative ml-52 w-[calc(100%-13rem)] p-10 pt-24 pb-24" data-scroll-container>
+        <section id="about" class="relative pb-10" data-scroll-section>
+            <div class="relative glass p-10 rounded-xl space-y-8">
+                <div data scroll data-scroll-speed="1" class="w-48 h-48 md:w-60 md:h-60 rounded-full overflow-hidden border-4 border-[#ff79c6] shadow-lg">
+                    <img src="me.png" alt="Ryan Seales" class="w-full h-full object-cover">
+                </div>
+                <div class="space-y-8 mt-12">
+                    <h2 data-scroll data-scroll-speed="1" class="text-5xl font-bold text-[#ff79c6]">
+                        Ryan Seales | Gameplay & Systems Engineer <br>8+ Years Experience <br>
+                    </h2>
+                    <h4 data-scroll data-scroll-speed="1" class="text-[#ff79c6]">
+                        CODE - Clean, Organized, Debugged, Efficient
+                    </h4>
+
+                    <div data-scroll data-scroll-speed="1">
+                        <h3>Who I Am</h3>
+                        <hr><br>
+                        <p>
+                            Hi, I am <span class="text-purple-400">Ryan Seales</span>, a programmer who thrives at the intersection of 
+                            <span class="text-cyan-400">low-level systems</span>, 
+                            <span class="text-cyan-400">modern application development</span>, 
+                            <span class="text-cyan-400">web design</span>, and 
+                            <span class="text-cyan-400">gameplay design</span>.
+                            <br><br>
+                            I’ve worked extensively with <span class="text-yellow-400">assembly (x86)</span>, 
+                            where I gained a deep understanding of how 
+                            <span class="text-green-400">computers operate under the hood</span>. 
+                            At the abstract language level, I’m proficient in 
+                            <span class="text-pink-400">C/C++</span>, 
+                            <span class="text-pink-400">Lua</span>, and 
+                            <span class="text-pink-400">JavaScript</span>, which I use to build everything from 
+                            <span class="text-green-400">efficient algorithms</span> and 
+                            <span class="text-green-400">data structures</span> to 
+                            <span class="text-green-400">web applications</span> and 
+                            <span class="text-green-400">interactive tools</span>.
+                            <br><br>
+                            In addition, I am completing my 
+                            <span class="text-yellow-400">Bachelor of Science in Information Technology (BSIT)</span>, 
+                            which has strengthened my skills in 
+                            <span class="text-cyan-400">networking</span>, 
+                            <span class="text-cyan-400">database management</span>, and 
+                            <span class="text-cyan-400">system administration</span> — expanding my toolkit beyond pure development into 
+                            <span class="text-green-400">infrastructure design</span> and 
+                            <span class="text-green-400">IT operations</span>.
+                            <br><br>
+                            On the web design side, I leverage modern technologies like 
+                            <span class="text-pink-400">React</span>, 
+                            <span class="text-pink-400">TailwindCSS</span>, 
+                            <span class="text-pink-400">Node.js</span>, and 
+                            <span class="text-pink-400">AJAX</span>, combined with 
+                            <span class="text-green-400">responsive design principles</span> to create 
+                            <span class="text-green-400">engaging</span>, 
+                            <span class="text-green-400">dynamic</span>, and 
+                            <span class="text-green-400">user-friendly interfaces</span>.
+                            <br><br>
+                            What drives me is <span class="text-yellow-400">problem-solving</span> — whether it’s 
+                            <span class="text-cyan-400">optimizing code for performance</span>, 
+                            <span class="text-cyan-400">designing scalable systems</span>, or 
+                            <span class="text-cyan-400">experimenting with new technologies</span>.
+                            <br><br>
+                            Beyond programming, I’m curious about 
+                            <span class="text-purple-400">math</span>, 
+                            <span class="text-purple-400">physics</span>, and 
+                            <span class="text-purple-400">reverse engineering</span>, all of which shape the way I approach 
+                            <span class="text-green-400">design</span> and 
+                            <span class="text-green-400">development</span>.
+                        </p><br>
+
+                        
+                        <h3>Tech Stack</h3>
+                        <hr>
+                        <div class="flex flex-wrap gap-6 text-5xl mt-6">
+                            <i class="devicon-cplusplus-line colored hover:scale-125 transition-transform duration-300"></i>
+                            <i class="devicon-c-line colored hover:scale-125 transition-transform duration-300"></i>
+                            <i class="devicon-lua-plain colored hover:scale-125 transition-transform duration-300"></i>
+                            <i class="devicon-javascript-plain colored hover:scale-125 transition-transform duration-300"></i>
+                            <i class="devicon-html-plain-wordmark colored hover:scale-125 transition-transform duration-300"></i>
+                            <i class="devicon-css-plain-wordmark colored hover:scale-125 transition-transform duration-300"></i>
+                            <i class="devicon-networkx-plain colored hover:scale-125 transition-transform duration-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="resume" class="relative pb-10" data-scroll-section>
+            <div class="relative glass p-10 rounded-xl space-y-8">
+                <div class="space-y-8 mt-12">
+                    <h2 data-scroll data-scroll-speed="1" class="text-5xl font-bold text-[#ff79c6]">
+                        📄 Resume
+                    </h2>
+                    <div data-scroll data-scroll-speed="1">
+                        <h3>Professional Summary</h3>
+                        <hr><br>
+                        <p>
+                            &nbsp;Inquisitive and ever adapting student pursuing a career in computer
+                            science, started off with computers at a young age and i've delved into
+                            almost every field from reverse-enginerring and low level systems to web design using modern technology stacks.
+                            Skilled at designing systems and data structures through planning and
+                            considering/weighing the memory cost that comes with each system being
+                            designed.
+                            Always willing to learn and improve, proven ability to enhance user
+                            experience through design-develop-feedback loops and consistency.
+                        </p>
+                    </div>
+                    <div data-scroll data-scroll-speed="1">
+                        <h3>Experience</h3>
+                        <hr><br>
+                        <p>
+                            <b>Lead Programmer</b>, Lotus Factory, Jul 2025 - Aug 2025
+                        </p>
+                        <ul class="list-disc list-inside ml-6">
+                            <li>Tasked with designing and implementing systems outlined in development docs</li>
+                            <li>Utilized Knit framework and Fusion UI library for ease of networking and UX design</li>
+                            <li>Programmed RNG mechanics for a simulator game, ensuring proper data store/data management and batch processing techniques for optimization</li>
+                        </ul>
+                        <br>
+
+                        <p>
+                            <b>IT Clerk</b>, Kim George & Associates, Jan 2024 - Jun 2025, St. George's, Grenada
+                        </p>
+                        <ul class="list-disc list-inside ml-6">
+                            <li>Scheduled meetings, conference calls, and webinars for team members and external partners</li>
+                            <li>Designed and implemented proprietary back-end data management systems interfaced through an internal web interface hosted on the network</li>
+                            <li>Configured and managed internal network systems to ensure network security and maintain infrastructure</li>
+                        </ul>
+                        <br>
+
+                        <p>
+                            <b>Assistant Lead Programmer</b>, Jakunta Inc, Current
+                        </p>
+                        <ul class="list-disc list-inside ml-6">
+                            <li>Developed a custom framework to streamline game development</li>
+                            <li>Designed and implemented gameplay mechanics</li>
+                            <li>Collaborated with design and art teams to create optimized, interactive game systems</li>
+                            <li>Assisted in debugging and performance optimization of multi-user systems</li>
+                        </ul>
+                    </div>
+                    <div data-scroll data-scroll-speed="1">
+                        <h3>Skills</h3>
+                        <hr><br>
+                        <ul class="list-disc list-inside ml-6 space-y-2">
+                            <li>Proficiency in algorithms and data structure design</li>
+                            <li>Proficiency in abstract languages: <span class="text-pink-400">Lua</span>, <span class="text-pink-400">Python</span>, <span class="text-pink-400">JavaScript</span></li>
+                            <li>Proficiency in low-level systems languages: <span class="text-yellow-400">NASM</span>, <span class="text-pink-400">C</span>, <span class="text-pink-400">C++</span></li>
+                            <li>Proficiency in web design technologies: <span class="text-cyan-400">Node.js</span>, <span class="text-cyan-400">React</span>, <span class="text-cyan-400">AJAX</span></li>
+                            <li>Capable in physics/mathematics fields of study: number theory, Euclidean geometry, vector mathematics, matrices, calculus</li>
+                            <li>Experience with low-level graphics programming: <span class="text-purple-400">OpenGL</span></li>
+                            <li>Very proficient with networking concepts and systems, both on and off the Roblox platform</li>
+                        </ul>
+
+                        
+                    </div>
+                    <div data-scroll data-scroll-speed="1">
+                        <h3>Education</h3>
+                        <hr><br>
+                        <p>
+                        <b>Bachelor of Science (B.S.): Information Technology</b><br>
+                        &nbsp;St. George's University, St. George's, Grenada, Grenada, Jan 2027<br><br>
+                        <b>High School Diploma: Information Technology, English, Mathematics</b><br>
+                        &nbsp;Presentation Brother's College, St. George's, Grenada, Grenada, Jun 2021
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="code-showcase" class="relative pb-10" data-scroll-section>
+            <div class="relative glass p-10 rounded-xl space-y-8">
+                <h2 class="text-5xl font-bold text-[#ff79c6]">💻 Code Snippets</h2>
+                <p>Click the tabs to switch between different source codes</p>
+                <div class="flex gap-4 mt-6">
+                    <button class="tab-btn px-4 py-2 rounded bg-[#44475a] text-white hover:bg-[#6272a4]" data-target="terminal">
+                        Terminal Image Loader | C
+                    </button>
+                    <button class="tab-btn px-4 py-2 rounded bg-[#44475a] text-white hover:bg-[#6272a4]" data-target="editor">
+                        Lightweight Text Editor | Python
+                    </button>
+                </div>
+
+                <div class="code-container rounded-lg p-6 mt-4 overflow-auto">
+                
+                    <div class="code-tab" id="terminal">
+                        <h3>Terminal Image Loader | C</h3>
+                        <p>A small school project whereby you can load any jpg/png into the terminal.</p>
+                        <pre><code class="language-c">
+#include <assert.h>
+#include <stdio.h>
+#include <math.h>
+#define STB_IMAGE_IMPLEMENTATION
+#include "./resources/stb_image.h"
+#define STB_IMAGE_RESIZE_IMPLEMENTATION
+#include "./resources/stb_image_resize.h"
+#include "./resources/maps.h"
+
+#define DEFAULT_WIDTH 32
+
+typedef enum {
+    DIST_HSL,
+    DIST_RGB
+} EnumDistance;
+
+static int distance256(int table256[256][3], int i, int a, int b, int c)
+{
+    int da = a - table256[i][0];
+    int db = b - table256[i][1];
+    int dc = c - table256[i][2];
+    return da*da + db*db + dc*dc;
+}
+
+static int find_ansi_index(int table256[256][3], int a, int b, int c)
+{
+    int index = 0;
+    for (int i = 0; i < 256; ++i) {
+        if (distance256(table256, i, a, b, c) < distance256(table256, index, a, b, c)) {
+            index = i;
+        }
+    }
+    return index;
+}
+
+
+const char* ParseArgs(int* argc, char** argv[])
+{
+    assert(*argc > 0);
+    const char* result = **argv;
+    *argc -= 1;
+    *argv += 1;
+    return result;
+}
+
+int main(int argc, char* argv[])
+{
+    const char* identifier = ParseArgs(&argc, &argv);
+    EnumDistance distEnum = DIST_RGB;
+
+    //step through the passed args
+    while (argc > 0) {
+
+        const char* flag = ParseArgs(&argc, &argv);
+        if (strcmp(flag, "-hsl") ==  0) {
+            distEnum = DIST_HSL;
+        } else {
+            const char* pathToFile = flag;
+            int width, height;
+            uint32_t* pixels = (uint32_t*)stbi_load(pathToFile, &width, &height, NULL, 4);
+
+            if (pixels == NULL) {
+                fprintf(stderr, "Could not read file: %s\n", pathToFile);
+                continue;
+            }
+            //Scale the image to fit into our console
+            int resized_height = height*DEFAULT_WIDTH/width;
+            uint32_t* resized_pixels = malloc(sizeof(uint32_t)*DEFAULT_WIDTH*resized_height); //alloc memory for our pixels
+            if (resized_pixels == NULL) {
+                fprintf(stderr, "Could not allocate memory for resized image\n");
+                exit(1);
+            }
+
+            int result = stbir_resize_uint8(
+                (const unsigned char*)pixels, width, height, sizeof(uint32_t)*width,
+                (unsigned char*)resized_pixels, DEFAULT_WIDTH, resized_height, sizeof(uint32_t)*DEFAULT_WIDTH,
+                4);
+
+            printf("%d", result);
+            
+            for (int y = 0; y < resized_height; ++y) {
+                for (int x = 0; x < DEFAULT_WIDTH; ++x) {
+                    uint32_t pixel = resized_pixels[y*DEFAULT_WIDTH + x];
+                    int r = (pixel>>8*0)&0xFF;
+                    int g = (pixel>>8*1)&0xFF;
+                    int b = (pixel>>8*2)&0xFF;
+                    int a = (pixel>>8*3)&0xFF;
+                    //convert
+                    r = a*r/255; 
+                    g = a*g/255;
+                    b = a*b/255;
+                    //To-Do: Add support for HSL
+                    printf("\e[48;5;%dm  ", find_ansi_index(rgb256, r, g, b));
+                }
+                printf("\e[0m\n");
+            }
+            printf("\e[0m\n");
+            free(resized_pixels);
+            stbi_image_free(pixels);
+        }
+    }
+    return 0;
+}
+                        </code></pre>
+                    </div>
+
+                    <div class="code-tab hidden" id="editor">
+                        <h3>Lightweight Text Editor | Python</h3>
+                        <p>Light-weight and performance friendly text-editor</p>
+                        <pre><code class="language-python">
+from tkinter import *
+from tkinter.ttk import *
+import tkinter.filedialog as tk_file_dialog
+import tkinter.font as tk_font
+import os
+import platform
+import themes
+import syntax
+
+DEFAULT_EDITOR_NAME = "kite-text-editor"
+DEFAULT_GEOMETRY = "800x600"
+START_TEXT = "print('Hello World!')"
+
+class LineCounter(Canvas):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.text_widget = None
+        
+    def attach_widget(self, text_widget):
+        self.text_widget = text_widget
+
+    def update(self, *args):
+        self.delete("all")
+        index = self.text_widget.index("@0,0")
+        while True:
+            line = self.text_widget.dlineinfo(index)
+            if line is None: 
+                break
+            pos = line[1]
+            number = str(index).split(".")[0]
+            self.create_text(10, pos, anchor="nw", text=number, fill="white")
+            index = self.text_widget.index("%s+1line" % index)
+
+class TextWidget(Text):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        
+        self.insert(1.0, START_TEXT)
+
+        self._origin = self._w + "_orig"
+        self.tk.call("rename", self._w, self._origin)
+        self.tk.createcommand(self._w, self._proxy)
+        
+    def _proxy(self, *args):
+        cmd = (self._origin,) + args
+        result = self.tk.call(cmd)
+
+        if (args[0] in ("insert", "replace", "delete") or
+            args[0:3] == ("mark", "set", "insert") or
+            args[0:2] == ("xview", "moveto") or
+            args[0:2] == ("xview", "scroll") or
+            args[0:2] == ("yview", "moveto") or
+            args[0:2] == ("yview", "scroll") 
+        ):
+            self.event_generate("<<Change>>", when="tail")
+
+        return result
+
+class Window(Frame):
+    def save_as(self):
+        self.file_name = None
+        self.file = tk_file_dialog.asksaveasfile(filetypes=[('Text', '*.txt'), ('Python', '*.py')], confirmoverwrite=True, defaultextension=".txt")
+        if self.file is None:
+            return 
+        else:
+            self.file_name = self.file.name
+            base = os.path.basename(self.file_name)
+            self.root_ref.title(self.name + " - '{}'".format(str(base)))
+        
+        file_text = str(self.text_widget.get(1.0, END))
+        self.file.write(file_text)
+        self.file.close()
+
+    def save(self):
+        try:
+            if self.file_name is not None and self.file is not None:
+                with open (self.file, 'r+') as file:
+                    data = file.read()
+                    file.seek(0)
+                    file.write(str(main_text.get(1.0, END)))
+                    file.truncate()
+            elif self.open_file is not None:
+                with open (self.open_file, 'r+') as file:
+                    data = file.read()
+                    file.seek(0)
+                    file.write(str(main_text.get(1.0, END)))
+                    file.truncate()
+        except AttributeError:
+            self.save_as()
+
+    def _open(self):
+        self.open_file = tk_file_dialog.askopenfile(mode = "r", title = "Open A Text File")
+        if self.open_file is not None:
+            content = self.open_file.read()
+            self.text_widget.delete(0.0, END)
+            self.text_widget.insert(END, content) 
+
+
+    def exit_editor(self):
+        self.root_ref.destroy()
+
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        
+        #window properties
+        self.name = DEFAULT_EDITOR_NAME
+        self.geometry = DEFAULT_GEOMETRY
+        self.icon = PhotoImage(file="assets/icon.png")
+        self.root_ref = args[0]
+        
+
+        #objects
+        self.font = tk_font.Font(family=themes.DEFAULT["font"], size=themes.DEFAULT["font_size"])
+        self.text_widget = TextWidget(self, width=800, height=600, wrap=WORD, font=self.font, bg=themes.DEFAULT["background"], fg=themes.DEFAULT["foreground"], insertbackground=themes.DEFAULT["foreground"], highlightthickness=0, relief=SOLID, padx=4)
+        self.scroll_bar = Scrollbar(self, orient="vertical", command=self.text_widget.yview)
+        self.scroll_bar.pack()
+        self.text_widget.configure(yscrollcommand=self.scroll_bar.set)
+        self.lexer = syntax.Lexer(self.text_widget)
+        self.lexer.scan()
+        self.line_counter = LineCounter(self, width=40, bg=self.lexer.style.background_color, bd=0)
+        self.line_counter.attach_widget(self.text_widget)
+        self.line_counter.pack()
+       
+
+        self.menu_bar = Menu(self)
+
+        #topbar-objects
+        self.tabs = Menu(self.menu_bar, tearoff=0)
+        self.tabs.add_command(label="Save File As", command=self.save_as)
+        self.tabs.add_command(label="Save File", command=self.save)
+        self.tabs.add_command(label="Open", command=self._open)
+        self.tabs.add_separator()
+        self.tabs.add_command(label="Exit", command=self.exit_editor)
+
+        self.syntax = Menu(self.menu_bar, tearoff=0)
+        for idx in self.lexer.list:
+            self.syntax.add_command(label=idx, command=None)
+
+        self.menu_bar.add_cascade(label="File", menu=self.tabs)
+        #self.menu_bar.add_cascade(label="Syntax", menu=self.syntax)
+
+        #bindings
+        self.text_widget.bind("<<Change>>", self._on_change)
+        self.text_widget.bind("<Configure>", self._on_change)
+        self.text_widget.bind("<KeyRelease>", lambda event: self.lexer.scan())
+
+    def _on_change(self, event):
+        self.line_counter.update()
+                        </code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="video-showcase" class="relative pb-24" data-scroll-section>
+            <div class="relative glass p-10 rounded-xl space-y-8">
+                <h2 class="text-5xl font-bold text-[#ff79c6]">🎬 Video Showcase</h2>
+                <p>Check out some of my projects and demos below!</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+                    
+
+                    <div data-scroll-speed="1" class="rounded-lg p-4 flex flex-col items-center justify-start h-156 w-156 shadow-lg hover:scale-105 transition-transform duration-300">
+                        <video class="rounded-md mb-2 w-full h-56 object-cover" autoplay muted loop playsinline>
+                            <source src="videos/bushido-bow.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <h3 class="text-xl font-bold text-[#ff79c6]">Bushido</h3>
+                        <p class="text-[#f8f8f2] text-sm text-center mt-1">Bow and Arrow Projectile System</p>
+                    </div>
+
+                    <div data-scroll-speed="1.5" class="rounded-lg p-4 flex flex-col items-center justify-start h-156 w-156 shadow-lg hover:scale-105 transition-transform duration-300">
+                        <video class="rounded-md mb-2 w-full h-56 object-cover" autoplay muted loop playsinline>
+                            <source src="videos/customization.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <h3 class="text-xl font-bold text-[#ff79c6]">Bushido</h3>
+                        <p class="text-[#f8f8f2] text-sm text-center mt-1">Customization System</p>
+                    </div>
+
+                    <div data-scroll-speed="1" class="rounded-lg p-4 flex flex-col items-center justify-start h-156 w-156 shadow-lg hover:scale-105 transition-transform duration-300">
+                        <video class="rounded-md mb-2 w-full h-56 object-cover" autoplay muted loop playsinline>
+                            <source src="videos/basketball.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <h3 class="text-xl font-bold text-[#ff79c6]">Ro-Hoop Test Demo</h3>
+                        <p class="text-[#f8f8f2] text-sm text-center mt-1">Basketball Shooting Mechanics Demonstration</p>
+                    </div>
+
+
+
+                    <div data-scroll-speed="1" class="rounded-lg p-4 flex flex-col items-center justify-start h-156 w-156 shadow-lg hover:scale-105 transition-transform duration-300">
+                        <video class="rounded-md mb-2 w-full h-56 object-cover" autoplay muted loop playsinline>
+                            <source src="videos/discord-relay.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <h3 class="text-xl font-bold text-[#ff79c6]">Chat Relay</h3>
+                        <p class="text-[#f8f8f2] text-sm text-center mt-1">Discord to Roblox Chat Relay System</p>
+                    </div>
+
+                    <div data-scroll-speed="1" class="rounded-lg p-4 flex flex-col items-center justify-start h-156 w-156 shadow-lg hover:scale-105 transition-transform duration-300">
+                        <video class="rounded-md mb-2 w-full h-56 object-cover" autoplay muted loop playsinline>
+                            <source src="videos/jujutsu.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <h3 class="text-xl font-bold text-[#ff79c6]">Combat Showcase</h3>
+                        <p class="text-[#f8f8f2] text-sm text-center mt-1">Anime Combat System Demonstration</p>
+                    </div>
+
+                    <div data-scroll-speed="1" class="rounded-lg p-4 flex flex-col items-center justify-start h-156 w-156 shadow-lg hover:scale-105 transition-transform duration-300">
+                        <video class="rounded-md mb-2 w-full h-56 object-cover" controls="controls" autoplay playsinline>
+                            <source src="videos/WallWalk.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <h3 class="text-xl font-bold text-[#ff79c6]">Wall Walking Physics Test Demo</h3>
+                        <p class="text-[#f8f8f2] text-sm text-center mt-1">Prototyped Wall Walking Demo</p>
+                    </div>
+
+                    <div data-scroll-speed="1" class="rounded-lg p-4 flex flex-col items-center justify-start h-156 w-156 shadow-lg hover:scale-105 transition-transform duration-300">
+                        <video class="rounded-md mb-2 w-full h-56 object-cover" controls="controls" autoplay playsinline>
+                            <source src="videos/StudRNG.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <h3 class="text-xl font-bold text-[#ff79c6]">Stud-RNG Simulator</h3>
+                        <p class="text-[#f8f8f2] text-sm text-center mt-1">RNG Simulator based on collecting studs and upgrading plot/machines.</p>
+                    </div>
+
+                    <div data-scroll-speed="1" class="rounded-lg p-4 flex flex-col items-center justify-start h-156 w-156 shadow-lg hover:scale-105 transition-transform duration-300">
+                        <video class="rounded-md mb-2 w-full h-56 object-cover" controls="controls" autoplay playsinline>
+                            <source src="videos/RoSchedule.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <h3 class="text-xl font-bold text-[#ff79c6]">Ro-Schedule</h3>
+                        <p class="text-[#f8f8f2] text-sm text-center mt-1">Schedule-1 based project utilizing BehaviorTrees, ECS architecture and Fusion for UI</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
