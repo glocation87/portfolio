@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/videos/:file", "destination": "/videos/:file" }
+  ]
+}
