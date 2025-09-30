@@ -43,7 +43,4 @@ Hi, I'm **Ryan Seales** – a **gameplay and systems engineer** with **8+ years 
 **CODE – Clean, Organized, Debugged, Efficient**  
 _“Problem-solving drives me, whether optimizing code, designing systems, or experimenting with new tech.”_
 
----
-
-> Portfolio colors reflected: **Purple (#bd93f9)** | **Pink (#ff79c6)** | **Cyan (#8be9fd / text-cyan-400)** | **Yellow (#f1fa8c / text-yellow-400)** | **Green (#50fa7b / text-green-400)**
 
