@@ -1,0 +1,688 @@
+<!--Ryan seales was here, feel free to review-->
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap");
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    :root {
+        --bg: #1a1a1a;
+        --bg2: #222222;
+        --bg3: #2a2a2a;
+        --text: #e8e6e0;
+        --muted: #e0954f;
+        --border: #333330;
+        --accent: #4a8fd4;
+    }
+    .site {
+        font-family: "DM Sans", sans-serif;
+        color: var(--text);
+        background: var(--bg);
+        width: 100%;
+        overflow: hidden;
+    }
+    nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.1rem 2rem;
+        border-bottom: 0.5px solid var(--border);
+    }
+    .nav-logo {
+        font-family: "DM Mono", monospace;
+        font-size: 13px;
+        font-weight: 500;
+        letter-spacing: 0.04em;
+        color: var(--accent);
+    }
+    .nav-links {
+        display: flex;
+        gap: 1.5rem;
+    }
+    .nav-links a {
+        font-size: 12px;
+        color: var(--muted);
+        text-decoration: none;
+        letter-spacing: 0.03em;
+        cursor: pointer;
+    }
+    .nav-links a:hover {
+        color: var(--text);
+    }
+    .hero {
+        padding: 3.5rem 2rem 2.5rem;
+        max-width: 700px;
+    }
+    .hero-label {
+        font-family: "DM Mono", monospace;
+        font-size: 11px;
+        color: var(--accent);
+        letter-spacing: 0.1em;
+        margin-bottom: 0.75rem;
+    }
+    .hero h1 {
+        font-family: "DM Serif Display", serif;
+        font-size: 42px;
+        font-weight: 400;
+        line-height: 1.15;
+        margin-bottom: 1rem;
+        color: var(--text);
+    }
+    .hero h1 em {
+        font-style: italic;
+        color: var(--muted);
+    }
+    .hero-sub {
+        font-size: 14px;
+        color: var(--muted);
+        line-height: 1.7;
+        max-width: 480px;
+        margin-bottom: 1.5rem;
+    }
+    .hero-btns {
+        display: flex;
+        gap: 10px;
+    }
+    .btn-primary {
+        font-family: "DM Mono", monospace;
+        font-size: 12px;
+        padding: 8px 18px;
+        background: var(--accent);
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        letter-spacing: 0.03em;
+    }
+    .btn-outline {
+        font-family: "DM Mono", monospace;
+        font-size: 12px;
+        padding: 8px 18px;
+        background: transparent;
+        color: var(--text);
+        border: 0.5px solid var(--border);
+        border-radius: 4px;
+        cursor: pointer;
+        letter-spacing: 0.03em;
+    }
+    .divider {
+        height: 0.5px;
+        background: var(--border);
+        margin: 0 2rem;
+    }
+    section {
+        padding: 2.5rem 2rem;
+    }
+    .sec-label {
+        font-family: "DM Mono", monospace;
+        font-size: 10px;
+        letter-spacing: 0.12em;
+        color: var(--accent);
+        margin-bottom: 1.25rem;
+    }
+    .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        align-items: start;
+    }
+    .about-text {
+        font-size: 13px;
+        color: var(--text);
+        line-height: 1.8;
+    }
+    .about-info {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .info-row {
+        display: flex;
+        justify-content: space-between;
+        font-size: 12px;
+        padding-bottom: 8px;
+        border-bottom: 0.5px solid var(--border);
+    }
+    .info-label {
+        color: var(--muted);
+    }
+    .info-val {
+        color: var(--text);
+        font-family: "DM Mono", monospace;
+        font-size: 11px;
+    }
+    .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1px;
+        background: var(--border);
+        border: 0.5px solid var(--border);
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    .skill-cell {
+        background: var(--bg2);
+        padding: 14px 16px;
+    }
+    .skill-cat {
+        font-size: 10px;
+        font-family: "DM Mono", monospace;
+        letter-spacing: 0.08em;
+        color: var(--accent);
+        margin-bottom: 8px;
+    }
+    .skill-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+    .tag {
+        font-size: 10px;
+        font-family: "DM Mono", monospace;
+        padding: 3px 8px;
+        background: var(--bg3);
+        border: 0.5px solid var(--border);
+        border-radius: 3px;
+        color: var(--muted);
+    }
+    .projects-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+    .project-card {
+        border: 0.5px solid var(--border);
+        border-radius: 8px;
+        padding: 1.25rem;
+        background: var(--bg2);
+    }
+    .project-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        margin-bottom: 8px;
+    }
+    .project-title {
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--text);
+    }
+    .project-link {
+        font-size: 18px;
+        color: var(--muted);
+    }
+    .project-desc {
+        font-size: 12px;
+        color: var(--muted);
+        line-height: 1.6;
+        margin-bottom: 10px;
+    }
+    .project-stack {
+        display: flex;
+        gap: 5px;
+        flex-wrap: wrap;
+    }
+    .exp-list {
+        display: flex;
+        flex-direction: column;
+    }
+    .exp-item {
+        display: grid;
+        grid-template-columns: 90px 1fr;
+        gap: 1.5rem;
+        padding: 1.25rem 0;
+        border-bottom: 0.5px solid var(--border);
+    }
+    .exp-item:last-child {
+        border-bottom: none;
+    }
+    .exp-date {
+        font-family: "DM Mono", monospace;
+        font-size: 10px;
+        color: var(--muted);
+        padding-top: 2px;
+    }
+    .exp-title {
+        font-size: 13px;
+        font-weight: 500;
+        margin-bottom: 2px;
+        color: var(--text);
+    }
+    .exp-co {
+        font-family: "DM Mono", monospace;
+        font-size: 11px;
+        color: var(--accent);
+        margin-bottom: 6px;
+    }
+    .exp-desc {
+        font-size: 12px;
+        color: var(--muted);
+        line-height: 1.6;
+    }
+    .contact-row {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+    .contact-chip {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 14px;
+        border: 0.5px solid var(--border);
+        border-radius: 4px;
+        font-size: 12px;
+        font-family: "DM Mono", monospace;
+        color: var(--muted);
+        cursor: pointer;
+        background: var(--bg2);
+    }
+    .contact-chip i {
+        font-size: 15px;
+        color: var(--accent);
+    }
+    footer {
+        padding: 1.5rem 2rem;
+        border-top: 0.5px solid var(--border);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .footer-txt {
+        font-family: "DM Mono", monospace;
+        font-size: 10px;
+        color: var(--muted);
+    }
+</style>
+
+<div class="site">
+    <nav>
+        <span class="nav-logo">ryan.dev</span>
+        <div class="nav-links">
+            <a href="#about">about</a><a href="#skills">skills</a
+            ><a href="#projects">projects</a><a href="#experience">experience</a
+            ><a href="#contact">contact</a>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <p class="hero-label">
+            SYSTEMS ENGINEER · FULL-STACK DEVELOPER · 3D GAME PROGRAMMER
+        </p>
+        <h1>Building systems<br />that <em>actually perform.</em></h1>
+        <p class="hero-sub">
+            I specialize in systems-level engineering with Rust, full-stack web
+            development, and 3D game programming. I design scalable database
+            models and relationships that keep queries efficient and data
+            integrity tight as systems grow. I've dabbled in binary analysis and
+            assembly (x86), and I bring network administration experience to
+            every project. From low-level tooling to interactive web apps — I
+            ship production-ready systems.
+        </p>
+        <div class="hero-btns">
+            <a
+                href="https://glocation87.github.io/portfolio/"
+                target="_blank"
+                class="btn-primary"
+                style="text-decoration: none; display: inline-block"
+                >view projects</a
+            >
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <section id="about">
+        <p class="sec-label">ABOUT ME</p>
+        <div class="about-grid">
+            <p class="about-text">
+                Hi, I'm Ryan Seales — a systems-level engineer who builds across
+                the full stack.<br /><br />
+                I work primarily in Rust, designing performant low-level tools
+                and scalable database architectures. I've experience with binary
+                analysis and x86 assembly, which sharpens my approach to
+                debugging and optimization.<br /><br />
+                On the web side, I ship production apps with React, Next.js, and
+                Node.js — from monorepo platforms to internal LAN systems. I
+                care deeply about how data is modeled: normalized schemas,
+                efficient relationships, and queries that stay fast as systems
+                grow.<br /><br />
+                I also bring 3D game programming and network administration into
+                the mix, having built custom renderers, gameplay frameworks, and
+                managed infrastructure.<br /><br />
+                Currently completing my BS in Information Technology at St
+                George's University. What drives me is problem-solving — whether
+                it's optimizing a render loop, designing a database schema, or
+                hardening a network.<br /><br />
+
+                Feel free to click <b>'view projects'</b>, my <b>github</b> or
+                check out <i><b>islandlink-grenada.com</b></i> to see my work in
+                action!
+            </p>
+            <div class="about-info">
+                <div class="info-row">
+                    <span class="info-label">Based in</span
+                    ><span class="info-val">Grenada, WI</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Available</span
+                    ><span class="info-val">Freelance + Full-time</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Experience</span
+                    ><span class="info-val">8+ years</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Speciality</span
+                    ><span class="info-val"
+                        >Systems Eng, WebDev, 3D & Networks</span
+                    >
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section id="education">
+        <p class="sec-label">EDUCATION</p>
+        <div class="exp-list">
+            <div class="exp-item">
+                <span class="exp-date">Current</span>
+                <div>
+                    <p class="exp-title">BS in Information Technology</p>
+                    <p class="exp-co">St George's University</p>
+                    <p class="exp-desc">
+                        Coursework covers:<br />• Web Design<br />• Database
+                        Model Design<br />• Low-Level Systems Programming<br />•
+                        Network Configuration
+                    </p>
+                </div>
+            </div>
+            <div class="exp-item">
+                <span class="exp-date">2016 — 2021</span>
+                <div>
+                    <p class="exp-title">Secondary School</p>
+                    <p class="exp-co">Presentation Brothers College</p>
+                    <p class="exp-desc">
+                        Subjects:<br />• Math<br />• English<br />• Biology<br />•
+                        Chemistry<br />• English Literature<br />• Information
+                        Technology
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section id="skills">
+        <p class="sec-label">SKILLS & TECH STACK</p>
+        <div class="skills-grid">
+            <div class="skill-cell">
+                <p class="skill-cat">LANGUAGES</p>
+                <div class="skill-tags">
+                    <span class="tag">Rust</span
+                    ><span class="tag">JavaScript</span
+                    ><span class="tag">TypeScript</span
+                    ><span class="tag">Python</span><span class="tag">Lua</span
+                    ><span class="tag">SQL</span><span class="tag">Bash</span>
+                </div>
+            </div>
+            <div class="skill-cell">
+                <p class="skill-cat">SYSTEMS & LOW-LEVEL</p>
+                <div class="skill-tags">
+                    <span class="tag">Systems Engineering</span
+                    ><span class="tag">Binary Analysis</span
+                    ><span class="tag">Assembly (x86)</span
+                    ><span class="tag">Linux Internals</span
+                    ><span class="tag">Performance Optimization</span>
+                </div>
+            </div>
+            <div class="skill-cell">
+                <p class="skill-cat">FRONTEND</p>
+                <div class="skill-tags">
+                    <span class="tag">React</span
+                    ><span class="tag">HTML/CSS</span
+                    ><span class="tag">TailwindCSS</span
+                    ><span class="tag">Next.js</span
+                    ><span class="tag">AJAX</span>
+                </div>
+            </div>
+            <div class="skill-cell">
+                <p class="skill-cat">BACKEND & DATABASES</p>
+                <div class="skill-tags">
+                    <span class="tag">Node.js</span
+                    ><span class="tag">Express</span
+                    ><span class="tag">FastAPI</span
+                    ><span class="tag">PostgreSQL</span
+                    ><span class="tag">Database Design</span
+                    ><span class="tag">Schema Modeling</span
+                    ><span class="tag">Query Optimization</span
+                    ><span class="tag">RESTful APIs</span>
+                </div>
+            </div>
+            <div class="skill-cell">
+                <p class="skill-cat">3D & GAME DEV</p>
+                <div class="skill-tags">
+                    <span class="tag">WebGL</span
+                    ><span class="tag">Three.js</span
+                    ><span class="tag">OpenGL</span><span class="tag">GLSL</span
+                    ><span class="tag">Game Programming</span
+                    ><span class="tag">Shader Programming</span>
+                </div>
+            </div>
+            <div class="skill-cell">
+                <p class="skill-cat">NETWORKS & OPS</p>
+                <div class="skill-tags">
+                    <span class="tag">Network Administration</span
+                    ><span class="tag">Docker</span
+                    ><span class="tag">Linux</span><span class="tag">AWS</span
+                    ><span class="tag">Git</span
+                    ><span class="tag">System Administration</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section id="projects">
+        <p class="sec-label">PROJECTS</p>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-top">
+                    <span class="project-title"
+                        >YT-Search | Rust CLI Program</span
+                    ><a
+                        href="https://github.com/glocation87/yt-search"
+                        target="_blank"
+                        class="project-link"
+                        style="text-decoration: none"
+                        ><i class="ti ti-external-link" aria-hidden="true"></i
+                    ></a>
+                </div>
+                <p class="project-desc">
+                    Rust CLI that queries the YouTube Data API, scores results
+                    via a custom weighted relevance algorithm, and
+                    batch-downloads tracks as MP3s through yt-dlp. Handles
+                    deduplication, date filtering, and config-based API key
+                    management.
+                </p>
+                <div class="project-stack">
+                    <span class="tag">Rust</span
+                    ><span class="tag">YouTube Data API</span
+                    ><span class="tag">yt-dlp</span><span class="tag">CLI</span>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-top">
+                    <span class="project-title"
+                        >Ancora - File Management Software</span
+                    ><a class="project-link"
+                        ><i class="ti ti-external-link" aria-hidden="true"></i
+                    ></a>
+                </div>
+                <p class="project-desc">
+                    A proprietary application built to run locally on the
+                    company LAN for security. Replaced manual paper filing with
+                    a digital index that allowed staff to organize, search, and
+                    manage sensitive client data files across daily operations.
+                </p>
+                <div class="project-stack">
+                    <span class="tag">React</span
+                    ><span class="tag">Node.js</span
+                    ><span class="tag">PostgreSQL</span>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-top">
+                    <span class="project-title"
+                        >IslandLink Grenada | islandlink-grenada.com </span
+                    ><a
+                        href="https://islandlink-grenada.com"
+                        target="_blank"
+                        class="project-link"
+                        style="text-decoration: none"
+                        ><i class="ti ti-external-link" aria-hidden="true"></i
+                    ></a>
+                </div>
+                <p class="project-desc">
+                    A business I founded — a monorepo web application and mobile
+                    app connecting users across Grenada. Architected a scalable
+                    relational database model to ensure efficient queries and
+                    data integrity at scale. The backend API runs on Railway
+                    with Docker, the web app is built with Next.js, TailwindCSS
+                    and React, and the mobile app is written in React Native.
+                </p>
+                <div class="project-stack">
+                    <span class="tag">Next.js</span
+                    ><span class="tag">React</span
+                    ><span class="tag">TailwindCSS</span
+                    ><span class="tag">React Native</span
+                    ><span class="tag">Railway</span
+                    ><span class="tag">Docker</span>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-top">
+                    <span class="project-title">Network Admin Suite</span
+                    ><a class="project-link"
+                        ><i class="ti ti-external-link" aria-hidden="true"></i
+                    ></a>
+                </div>
+                <p class="project-desc">
+                    Simulated a virtual Wide Area Network environment (similar
+                    to a University's), segmenting and configuring each
+                    department or zone with tailored network policies based on
+                    specific requirements such as security restrictions and
+                    accessibility needs; mirroring real-world enterprise network
+                    design and deployment workflows.
+                </p>
+                <div class="project-stack">
+                    <span class="tag">Python</span><span class="tag">Rust</span
+                    ><span class="tag">WebSocket</span>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-top">
+                    <span class="project-title"
+                        >Scalable Database Architecture</span
+                    ><a class="project-link"
+                        ><i class="ti ti-external-link" aria-hidden="true"></i
+                    ></a>
+                </div>
+                <p class="project-desc">
+                    Designed and modeled scalable relational database
+                    architectures with normalized schemas, efficient indexing,
+                    and optimized relationships to ensure fast queries and data
+                    integrity at scale.
+                </p>
+                <div class="project-stack">
+                    <span class="tag">PostgreSQL</span
+                    ><span class="tag">Database Design</span
+                    ><span class="tag">Schema Modeling</span
+                    ><span class="tag">Query Optimization</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section id="experience">
+        <p class="sec-label">WORK EXPERIENCE</p>
+        <div class="exp-list">
+            <div class="exp-item">
+                <span class="exp-date">Sept 2025 - May 2026</span>
+                <div>
+                    <p class="exp-title">Assistant Lead Programmer</p>
+                    <p class="exp-co">Jakunta Inc</p>
+                    <p class="exp-desc">
+                        Developed a custom framework to streamline game
+                        development. Designed and implemented gameplay
+                        mechanics, collaborated with design and art teams to
+                        create optimized interactive game systems, and assisted
+                        in debugging and performance optimization of multi-user
+                        systems.
+                    </p>
+                </div>
+            </div>
+            <div class="exp-item">
+                <span class="exp-date">Jul 2025 — Aug 2025</span>
+                <div>
+                    <p class="exp-title">Lead Programmer</p>
+                    <p class="exp-co">Lotus Factory</p>
+                    <p class="exp-desc">
+                        Tasked with designing and implementing systems outlined
+                        in development docs. Utilized the Knit framework and
+                        Fusion UI library for networking and UX design.
+                        Programmed RNG mechanics for a simulator game, ensuring
+                        proper data-store management and batch-processing
+                        techniques for optimization.
+                    </p>
+                </div>
+            </div>
+            <div class="exp-item">
+                <span class="exp-date">Jan 2024 — Jun 2025</span>
+                <div>
+                    <p class="exp-title">IT Clerk</p>
+                    <p class="exp-co">
+                        Kim George & Associates, St. George's, Grenada
+                    </p>
+                    <p class="exp-desc">
+                        Scheduled meetings, conference calls, and webinars for
+                        team members and external partners. Designed and
+                        implemented proprietary back-end data-management systems
+                        with a scalable database model and normalized
+                        relationships, interfaced through an internal web UI
+                        hosted on the network. Configured and managed internal
+                        network systems to ensure network security and
+                        infrastructure maintenance.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section id="contact">
+        <p class="sec-label">CONTACT</p>
+        <div class="contact-row">
+            <div class="contact-chip">
+                <i class="ti ti-mail" aria-hidden="true"></i
+                >ryanseales@islandlink-grenada.com
+            </div>
+            <div class="contact-chip">
+                <i class="ti ti-brand-github" aria-hidden="true"></i
+                >github.com/glocation87
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <span class="footer-txt">Ryan Seales was here </span>
+    </footer>
+</div>
