@@ -1,636 +1,211 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Ryan Seales</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.css" rel="stylesheet" />
-
-    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-javascript.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-c.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-lua.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
-    <script src="https://kit.fontawesome.com/38967f8773.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>~/seven — Ryan Seales</title>
+  <meta name="description" content="Ryan Seales — network administrator, infrastructure pentester and systems programmer from Grenada. Minecraft plugins, Roblox game systems, web app security.">
+  <meta name="theme-color" content="#0a0c0b">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    // Apply a saved theme before paint (default: follow the system).
+    try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
 </head>
-<body class="bg-[#282a36] text-[#f8f8f2] font-['Fira_Code'] flex">
-    <canvas id="particle-bg" class="fixed top-0 left-0 w-full h-full z-0"></canvas>
+<body>
+<a class="skip" href="#main">skip to content</a>
 
-    <!--Topbar-->
-    <nav id="top-socials" class="glass-nav fixed top-0 left-52 right-0 h-14 flex justify-center items-center gap-8 z-50">
-        <a href="https://discord.com/users/cryphowns" target="_blank" class="social-link flex items-center gap-2 text-[#bd93f9]">
-            <i class="fab fa-discord text-xl"></i><span>Discord</span>
-        </a>
-        <a href="mailto:glocation87@gmail.com" class="social-link flex items-center gap-2 text-[#bd93f9]">
-            <i class="fas fa-envelope text-xl"></i><span>Email</span>
-        </a>
-        <a href="https://github.com/glocation87" target="_blank" class="social-link flex items-center gap-2 text-[#bd93f9]">
-            <i class="fab fa-github text-xl"></i><span>GitHub</span>
-        </a>
-        <a href="https://www.roblox.com/users/5281751970/profile" target="_blank" class="social-link flex items-center gap-2 text-[#bd93f9]">
-            <i class="fas fa-gamepad text-xl"></i><span>Roblox</span>
-        </a>
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <div class="wrap">
+    <a class="nav__brand" href="#whoami"><b>~/</b>seven</a>
+    <button class="btn btn--ghost btn--sm nav__menu" type="button" aria-expanded="false" aria-controls="nav-links">menu</button>
+    <nav class="nav__links" id="nav-links" aria-label="Sections">
+      <a class="nav__link" href="#whoami">whoami</a>
+      <a class="nav__link" href="#projects">projects</a>
+      <a class="nav__link" href="#minecraft">minecraft</a>
+      <a class="nav__link" href="#roblox">roblox</a>
+      <a class="nav__link" href="#log">log</a>
+      <a class="nav__link" href="#contact">contact</a>
     </nav>
+    <button class="btn btn--ghost btn--sm nav__theme" type="button" aria-label="Toggle light and dark theme">theme</button>
+  </div>
+</header>
 
-    <!--Sidebar-->
-    <nav id="sidebar" class="glass-nav fixed top-0 left-0 h-screen w-52 flex flex-col gap-3 p-5 z-51 ">
-        <h2 class="text-center text-[#bd93f9] font-bold text-lg mb-2">Navigation</h2>
-        <hr class="border-[#44475a]"/>
-        <a href="#top-socials"    class="nav-link text-[#bd93f9] rounded p-2">Contact</a>
-        <hr class="border-[#44475a] justify-center" width="60%" />
-        <a href="#about"    class="nav-link text-[#bd93f9] rounded p-2">About Me</a>
-        <a href="#resume"   class="nav-link text-[#bd93f9] rounded p-2">Resume</a>
-        <a href="#video-showcase" class="nav-link text-[#bd93f9] rounded p-2">Showcase</a>
-        <a href="#code-showcase" class="nav-link text-[#bd93f9] rounded p-2">Code Review</a>
-    </nav>
+<main id="main" class="wrap">
 
-    <!--Main Section-->
-    <div class="relative ml-52 w-[calc(100%-13rem)] p-10 pt-24 pb-24" data-scroll-container>
-        <section id="about" class="relative pb-10" data-scroll-section>
-            <div class="relative glass p-10 rounded-xl space-y-8">
-                <div data scroll data-scroll-speed="1" class="w-48 h-48 md:w-60 md:h-60 rounded-full overflow-hidden border-4 border-[#ff79c6] shadow-lg">
-                    <img src="me.png" alt="Ryan Seales" class="w-full h-full object-cover">
-                </div>
-                <div class="space-y-8 mt-12">
-                    <h2 data-scroll data-scroll-speed="1" class="text-5xl font-bold text-[#ff79c6]">
-                        Ryan Seales | Gameplay & Systems Engineer <br>8+ Years Experience <br>
-                    </h2>
-                    <h4 data-scroll data-scroll-speed="1" class="text-[#ff79c6]">
-                        CODE - Clean, Organized, Debugged, Efficient
-                    </h4>
+  <!-- ============ 01 // WHOAMI ============ -->
+  <section class="hero" id="whoami">
+    <div>
+      <p class="eyebrow label"><b>01 //</b> whoami</p>
+      <h1 class="handle"><b>~/</b>seven</h1>
+      <p class="statement">Ryan Seales. I build systems, then I try to break them.</p>
+      <p class="lede">Network administrator and infrastructure pentester from Grenada. I write low-level code, ship Paper plugins for Minecraft servers, build Roblox game systems, and test web apps for the bugs scanners miss.</p>
+      <div class="btn-row">
+        <a class="btn btn--primary" href="#projects">view projects <span class="btn__glyph">→</span></a>
+        <a class="btn btn--ghost" href="https://github.com/glocation87" target="_blank" rel="noopener">github <span class="btn__glyph">↗</span></a>
+      </div>
+    </div>
+    <div class="term" aria-label="Terminal summary">
+      <div class="term__bar"><span>seven@lab:~</span><span>zsh</span></div>
+<pre class="term__body"><span class="term__p">$</span> whoami --long
+<span class="term__out">role     network admin · infra pentester
+focus    low-level systems · minecraft plugins
+         roblox systems · web app security
+langs    rust  c  c++  java  lua  python  ts  sql
+based    st. george's, grenada</span>
+<span class="term__p">$</span> ls ~/work
+<span class="term__out">infra/  low-level/  minecraft/  roblox/  appsec/</span>
+<span class="term__p">$</span> <span class="cursor"></span></pre>
+    </div>
+  </section>
 
-                    <div data-scroll data-scroll-speed="1">
-                        <h3>Who I Am</h3>
-                        <hr><br>
-                        <p>
-                            Hi, I am <span class="text-purple-400">Ryan Seales</span>, a programmer who thrives at the intersection of 
-                            <span class="text-cyan-400">low-level systems</span>, 
-                            <span class="text-cyan-400">modern application development</span>, 
-                            <span class="text-cyan-400">web design</span>, and 
-                            <span class="text-cyan-400">gameplay design</span>.
-                            <br><br>
-                            I’ve worked extensively with <span class="text-yellow-400">assembly (x86)</span>, 
-                            where I gained a deep understanding of how 
-                            <span class="text-green-400">computers operate under the hood</span>. 
-                            At the abstract language level, I’m proficient in 
-                            <span class="text-pink-400">C/C++</span>, 
-                            <span class="text-pink-400">Lua</span>, and 
-                            <span class="text-pink-400">JavaScript</span>, which I use to build everything from 
-                            <span class="text-green-400">efficient algorithms</span> and 
-                            <span class="text-green-400">data structures</span> to 
-                            <span class="text-green-400">web applications</span> and 
-                            <span class="text-green-400">interactive tools</span>.
-                            <br><br>
-                            In addition, I am completing my 
-                            <span class="text-yellow-400">Bachelor of Science in Information Technology (BSIT)</span>, 
-                            which has strengthened my skills in 
-                            <span class="text-cyan-400">networking</span>, 
-                            <span class="text-cyan-400">database management</span>, and 
-                            <span class="text-cyan-400">system administration</span> — expanding my toolkit beyond pure development into 
-                            <span class="text-green-400">infrastructure design</span> and 
-                            <span class="text-green-400">IT operations</span>.
-                            <br><br>
-                            On the web design side, I leverage modern technologies like 
-                            <span class="text-pink-400">React</span>, 
-                            <span class="text-pink-400">TailwindCSS</span>, 
-                            <span class="text-pink-400">Node.js</span>, and 
-                            <span class="text-pink-400">AJAX</span>, combined with 
-                            <span class="text-green-400">responsive design principles</span> to create 
-                            <span class="text-green-400">engaging</span>, 
-                            <span class="text-green-400">dynamic</span>, and 
-                            <span class="text-green-400">user-friendly interfaces</span>.
-                            <br><br>
-                            What drives me is <span class="text-yellow-400">problem-solving</span> — whether it’s 
-                            <span class="text-cyan-400">optimizing code for performance</span>, 
-                            <span class="text-cyan-400">designing scalable systems</span>, or 
-                            <span class="text-cyan-400">experimenting with new technologies</span>.
-                            <br><br>
-                            Beyond programming, I’m curious about 
-                            <span class="text-purple-400">math</span>, 
-                            <span class="text-purple-400">physics</span>, and 
-                            <span class="text-purple-400">reverse engineering</span>, all of which shape the way I approach 
-                            <span class="text-green-400">design</span> and 
-                            <span class="text-green-400">development</span>.
-                        </p><br>
+  <!-- domain strip -->
+  <div class="domains">
+    <div class="dom"><span class="tag tag--net"><span class="tag__key">[net]</span> infra</span><h3>Networks &amp; infrastructure</h3><p>Administration, segmentation, internal pentests.</p></div>
+    <div class="dom"><span class="tag tag--sys"><span class="tag__key">[sys]</span> low-level</span><h3>Systems programming</h3><p>Rust, C, x86, hypervisors, binary analysis.</p></div>
+    <div class="dom"><span class="tag tag--mc"><span class="tag__key">[mc]</span> minecraft</span><h3>Minecraft plugins</h3><p>Paper plugins, minigames, map tooling.</p></div>
+    <div class="dom"><span class="tag tag--rbx"><span class="tag__key">[rbx]</span> roblox</span><h3>Roblox game systems</h3><p>Combat, physics, RNG, frameworks.</p></div>
+    <div class="dom"><span class="tag tag--web"><span class="tag__key">[web]</span> appsec</span><h3>Web apps &amp; security</h3><p>Full-stack builds, auth, access control.</p></div>
+  </div>
 
-                        
-                        <h3>Tech Stack</h3>
-                        <hr>
-                        <div class="flex flex-wrap gap-6 text-5xl mt-6">
-                            <i class="devicon-cplusplus-line colored hover:scale-125 transition-transform duration-300"></i>
-                            <i class="devicon-c-line colored hover:scale-125 transition-transform duration-300"></i>
-                            <i class="devicon-lua-plain colored hover:scale-125 transition-transform duration-300"></i>
-                            <i class="devicon-javascript-plain colored hover:scale-125 transition-transform duration-300"></i>
-                            <i class="devicon-html-plain-wordmark colored hover:scale-125 transition-transform duration-300"></i>
-                            <i class="devicon-css-plain-wordmark colored hover:scale-125 transition-transform duration-300"></i>
-                            <i class="devicon-networkx-plain colored hover:scale-125 transition-transform duration-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+  <!-- ============ 02 // PROJECTS ============ -->
+  <section id="projects">
+    <header class="sh"><h2 class="sh__title"><span class="sh__idx">02</span> <span class="sh__sep">//</span> projects</h2><span class="sh__aside label">filter by domain</span></header>
+    <div class="tags filters" role="group" aria-label="Filter projects">
+      <button class="tag" type="button" data-filter="all" aria-pressed="true">all</button>
+      <button class="tag tag--net" type="button" data-filter="net" aria-pressed="false"><span class="tag__key">[net]</span></button>
+      <button class="tag tag--sys" type="button" data-filter="sys" aria-pressed="false"><span class="tag__key">[sys]</span></button>
+      <button class="tag tag--web" type="button" data-filter="web" aria-pressed="false"><span class="tag__key">[web]</span></button>
+    </div>
+    <div class="grid" id="project-grid">
 
-        <section id="resume" class="relative pb-10" data-scroll-section>
-            <div class="relative glass p-10 rounded-xl space-y-8">
-                <div class="space-y-8 mt-12">
-                    <h2 data-scroll data-scroll-speed="1" class="text-5xl font-bold text-[#ff79c6]">
-                        📄 Resume
-                    </h2>
-                    <div data-scroll data-scroll-speed="1">
-                        <h3>Professional Summary</h3>
-                        <hr><br>
-                        <p>
-                            &nbsp;Inquisitive and ever adapting student pursuing a career in computer
-                            science, started off with computers at a young age and i've delved into
-                            almost every field from reverse-enginerring and low level systems to web design using modern technology stacks.
-                            Skilled at designing systems and data structures through planning and
-                            considering/weighing the memory cost that comes with each system being
-                            designed.
-                            Always willing to learn and improve, proven ability to enhance user
-                            experience through design-develop-feedback loops and consistency.
-                        </p>
-                    </div>
-                    <div data-scroll data-scroll-speed="1">
-                        <h3>Experience</h3>
-                        <hr><br>
-                        <p>
-                            <b>Lead Programmer</b>, Lotus Factory, Jul 2025 - Aug 2025
-                        </p>
-                        <ul class="list-disc list-inside ml-6">
-                            <li>Tasked with designing and implementing systems outlined in development docs</li>
-                            <li>Utilized Knit framework and Fusion UI library for ease of networking and UX design</li>
-                            <li>Programmed RNG mechanics for a simulator game, ensuring proper data store/data management and batch processing techniques for optimization</li>
-                        </ul>
-                        <br>
+      <article class="card" data-domain="web">
+        <div class="card__top"><span class="tag tag--web"><span class="tag__key">[web]</span> full-stack</span><span class="label muted"><span class="dot"></span>live</span></div>
+        <h3 class="card__title">IslandLink Grenada</h3>
+        <p class="card__sum">A business I founded: web and mobile app connecting users across Grenada, on a relational model built to scale.</p>
+        <div class="tags"><span class="tag">next.js</span><span class="tag">react native</span><span class="tag">docker</span></div>
+        <div class="card__foot"><span>monorepo</span><span class="card__links"><a href="https://islandlink-grenada.com" target="_blank" rel="noopener">visit ↗</a></span></div>
+      </article>
 
-                        <p>
-                            <b>IT Clerk</b>, Kim George & Associates, Jan 2024 - Jun 2025, St. George's, Grenada
-                        </p>
-                        <ul class="list-disc list-inside ml-6">
-                            <li>Scheduled meetings, conference calls, and webinars for team members and external partners</li>
-                            <li>Designed and implemented proprietary back-end data management systems interfaced through an internal web interface hosted on the network</li>
-                            <li>Configured and managed internal network systems to ensure network security and maintain infrastructure</li>
-                        </ul>
-                        <br>
+      <article class="card" data-domain="net">
+        <div class="card__top"><span class="tag tag--net"><span class="tag__key">[net]</span> infra</span><span class="label muted"><span class="dot"></span>done</span></div>
+        <h3 class="card__title">Network Admin Suite</h3>
+        <p class="card__sum">A simulated university-style WAN, each department segmented with its own security and access policies.</p>
+        <div class="tags"><span class="tag">python</span><span class="tag">rust</span><span class="tag">websocket</span></div>
+        <div class="card__foot"><span>wan · segmentation</span><span class="card__links"></span></div>
+      </article>
 
-                        <p>
-                            <b>Assistant Lead Programmer</b>, Jakunta Inc, Current
-                        </p>
-                        <ul class="list-disc list-inside ml-6">
-                            <li>Developed a custom framework to streamline game development</li>
-                            <li>Designed and implemented gameplay mechanics</li>
-                            <li>Collaborated with design and art teams to create optimized, interactive game systems</li>
-                            <li>Assisted in debugging and performance optimization of multi-user systems</li>
-                        </ul>
-                    </div>
-                    <div data-scroll data-scroll-speed="1">
-                        <h3>Skills</h3>
-                        <hr><br>
-                        <ul class="list-disc list-inside ml-6 space-y-2">
-                            <li>Proficiency in algorithms and data structure design</li>
-                            <li>Proficiency in abstract languages: <span class="text-pink-400">Lua</span>, <span class="text-pink-400">Python</span>, <span class="text-pink-400">JavaScript</span></li>
-                            <li>Proficiency in low-level systems languages: <span class="text-yellow-400">NASM</span>, <span class="text-pink-400">C</span>, <span class="text-pink-400">C++</span></li>
-                            <li>Proficiency in web design technologies: <span class="text-cyan-400">Node.js</span>, <span class="text-cyan-400">React</span>, <span class="text-cyan-400">AJAX</span></li>
-                            <li>Capable in physics/mathematics fields of study: number theory, Euclidean geometry, vector mathematics, matrices, calculus</li>
-                            <li>Experience with low-level graphics programming: <span class="text-purple-400">OpenGL</span></li>
-                            <li>Very proficient with networking concepts and systems, both on and off the Roblox platform</li>
-                        </ul>
+      <article class="card" data-domain="sys">
+        <div class="card__top"><span class="tag tag--sys"><span class="tag__key">[sys]</span> low-level</span><span class="label muted"><span class="dot dot--wip"></span>wip</span></div>
+        <h3 class="card__title">Hyper7-Visor</h3>
+        <p class="card__sum">AMDx64 Hyper-V prototype.</p>
+        <div class="tags"><span class="tag">c</span><span class="tag">amd-v</span></div>
+        <div class="card__foot"><span>c</span><span class="card__links"><a href="https://github.com/glocation87/Hyper7-Visor" target="_blank" rel="noopener">source ↗</a></span></div>
+      </article>
 
-                        
-                    </div>
-                    <div data-scroll data-scroll-speed="1">
-                        <h3>Education</h3>
-                        <hr><br>
-                        <p>
-                        <b>Bachelor of Science (B.S.): Information Technology</b><br>
-                        &nbsp;St. George's University, St. George's, Grenada, Grenada, Jan 2027<br><br>
-                        <b>High School Diploma: Information Technology, English, Mathematics</b><br>
-                        &nbsp;Presentation Brother's College, St. George's, Grenada, Grenada, Jun 2021
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
+      <!-- TODO(ryan): one-line summary for RakSniff7, and confirm its domain tag -->
+      <article class="card" data-domain="sys">
+        <div class="card__top"><span class="tag tag--sys"><span class="tag__key">[sys]</span> low-level</span><span class="label muted"><span class="dot dot--wip"></span>wip</span></div>
+        <h3 class="card__title">RakSniff7</h3>
+        <p class="card__sum">One-line summary of what it does.</p>
+        <div class="tags"><span class="tag">c</span></div>
+        <div class="card__foot"><span>c</span><span class="card__links"><a href="https://github.com/glocation87/RakSniff7" target="_blank" rel="noopener">source ↗</a></span></div>
+      </article>
 
-        <section id="video-showcase" class="relative pb-24" data-scroll-section>
-            <div class="relative glass p-10 rounded-xl space-y-8">
-                <h2 class="text-5xl font-bold text-[#ff79c6]">🎬 Video Showcase</h2>
-                <p>Check out some of my projects and demos below!</p>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+      <article class="card" data-domain="sys">
+        <div class="card__top"><span class="tag tag--sys"><span class="tag__key">[sys]</span> cli</span><span class="label muted"><span class="dot"></span>done</span></div>
+        <h3 class="card__title">YT-Search</h3>
+        <p class="card__sum">Rust CLI that ranks YouTube Data API results with a weighted relevance score and batch-downloads them as MP3s.</p>
+        <div class="tags"><span class="tag">rust</span><span class="tag">yt-dlp</span></div>
+        <div class="card__foot"><span>rust</span><span class="card__links"><a href="https://github.com/glocation87/yt-search" target="_blank" rel="noopener">source ↗</a></span></div>
+      </article>
 
-                    <div data-scroll-speed="1" class="rounded-lg p-4 flex flex-col items-center justify-start h-156 w-156 shadow-lg hover:scale-105 transition-transform duration-300">
-                        <iframe 
-                            class="rounded-md mb-2 w-full h-56"
-                            src="https://www.youtube.com/embed/1sZEVW634mc?autoplay=1&mute=1&loop=1&playlist=1sZEVW634mc"
-                            title="Bow and Arrow Projectile System"
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen
-                        ></iframe>
-                        <h3 class="text-xl font-bold text-[#ff79c6]">Bushido</h3>
-                        <p class="text-[#f8f8f2] text-sm text-center mt-1">Bow and Arrow Projectile System</p>
-                    </div>
-
-                    <div data-scroll-speed="1.5" class="rounded-lg p-4 flex flex-col items-center justify-start h-156 w-156 shadow-lg hover:scale-105 transition-transform duration-300">
-                         <iframe 
-                            class="rounded-md mb-2 w-full h-56"
-                            src="https://www.youtube.com/embed/D9uwXdZsQt8?autoplay=1&mute=1&loop=1&playlist=D9uwXdZsQt8"
-                            title="Customization System"
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen
-                        ></iframe>
-                        <h3 class="text-xl font-bold text-[#ff79c6]">Bushido</h3>
-                        <p class="text-[#f8f8f2] text-sm text-center mt-1">Customization System</p>
-                    </div>
-
-                    <div data-scroll-speed="1.5" class="rounded-lg p-4 flex flex-col items-center justify-start h-156 w-156 shadow-lg hover:scale-105 transition-transform duration-300">
-                         <iframe 
-                            class="rounded-md mb-2 w-full h-56"
-                            src="https://www.youtube.com/embed/hMq8feQQpd0?autoplay=1&mute=1&loop=1&playlist=hMq8feQQpd0"
-                            title="Bushido Shinobi Wall Run"
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen
-                        ></iframe>
-                        <h3 class="text-xl font-bold text-[#ff79c6]">Bushido</h3>
-                        <p class="text-[#f8f8f2] text-sm text-center mt-1">Shinobi Wall Run</p>
-                    </div>
-
-                    <div data-scroll-speed="1" class="rounded-lg p-4 flex flex-col items-center justify-start h-156 w-156 shadow-lg hover:scale-105 transition-transform duration-300">
-                        <iframe 
-                            class="rounded-md mb-2 w-full h-56"
-                            src="https://www.youtube.com/embed/kAFdvoHFLgI?autoplay=1&mute=1&loop=1&playlist=kAFdvoHFLgI"
-                            title="Ro-Hoop Test Demo"
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen
-                        ></iframe>
-                        <h3 class="text-xl font-bold text-[#ff79c6]">Ro-Hoop Test Demo</h3>
-                        <p class="text-[#f8f8f2] text-sm text-center mt-1">Basketball Shooting Mechanics Demonstration</p>
-                    </div>
-
-                    <div data-scroll-speed="1" class="rounded-lg p-4 flex flex-col items-center justify-start h-156 w-156 shadow-lg hover:scale-105 transition-transform duration-300">
-                        <iframe 
-                            class="rounded-md mb-2 w-full h-56"
-                            src="https://www.youtube.com/embed/p5CpvkZIVE8?autoplay=1&mute=1&loop=1&playlist=p5CpvkZIVE8"
-                            title="Chat Relay"
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen
-                        ></iframe>
-                        <h3 class="text-xl font-bold text-[#ff79c6]">Chat Relay</h3>
-                        <p class="text-[#f8f8f2] text-sm text-center mt-1">Discord to Roblox Chat Relay System</p>
-                    </div>
-
-                    <div data-scroll-speed="1" class="rounded-lg p-4 flex flex-col items-center justify-start h-156 w-156 shadow-lg hover:scale-105 transition-transform duration-300">
-                        <iframe 
-                            class="rounded-md mb-2 w-full h-56"
-                            src="https://www.youtube.com/embed/mzVvsjzUMJY?autoplay=1&mute=1&loop=1&playlist=mzVvsjzUMJY"
-                            title="Combat Showcase"
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen
-                        ></iframe>
-                        <h3 class="text-xl font-bold text-[#ff79c6]">Combat Showcase</h3>
-                        <p class="text-[#f8f8f2] text-sm text-center mt-1">Anime Combat System Demonstration</p>
-                    </div>
-
-                    <div data-scroll-speed="1" class="rounded-lg p-4 flex flex-col items-center justify-start h-156 w-156 shadow-lg hover:scale-105 transition-transform duration-300">
-                        <iframe 
-                            class="rounded-md mb-2 w-full h-56"
-                            src="https://www.youtube.com/embed/TnqcRvDEsFE?autoplay=1&mute=1&loop=1&playlist=TnqcRvDEsFE"
-                            title="Wall Walking Physics Test Demo"
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen
-                        ></iframe>
-                        <h3 class="text-xl font-bold text-[#ff79c6]">Wall Walking Physics Test Demo</h3>
-                        <p class="text-[#f8f8f2] text-sm text-center mt-1">Prototyped Wall Walking Demo</p>
-                    </div>
-
-                    <div data-scroll-speed="1" class="rounded-lg p-4 flex flex-col items-center justify-start h-156 w-156 shadow-lg hover:scale-105 transition-transform duration-300">
-                        <iframe 
-                            class="rounded-md mb-2 w-full h-56"
-                            src="https://www.youtube.com/embed/lTbOrLoj4iw?autoplay=1&mute=1&loop=1&playlist=lTbOrLoj4iw"
-                            title="Stud-RNG Simulator"
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen
-                        ></iframe>
-                        <h3 class="text-xl font-bold text-[#ff79c6]">Stud-RNG Simulator</h3>
-                        <p class="text-[#f8f8f2] text-sm text-center mt-1">RNG Simulator based on collecting studs and upgrading plot/machines.</p>
-                    </div>
-
-                    <div data-scroll-speed="1" class="rounded-lg p-4 flex flex-col items-center justify-start h-156 w-156 shadow-lg hover:scale-105 transition-transform duration-300">
-                        <iframe 
-                            class="rounded-md mb-2 w-full h-56"
-                            src="https://www.youtube.com/embed/HJFbJcsn5hs?autoplay=1&mute=1&loop=1&playlist=HJFbJcsn5hs"
-                            title="Ro-Schedule"
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen
-                        ></iframe>
-                        <h3 class="text-xl font-bold text-[#ff79c6]">Ro-Schedule</h3>
-                        <p class="text-[#f8f8f2] text-sm text-center mt-1">Schedule-1 based project utilizing BehaviorTrees, ECS architecture and Fusion for UI</p>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <section id="code-showcase" class="relative pb-10" data-scroll-section>
-            <div class="relative glass p-10 rounded-xl space-y-8">
-                <h2 class="text-5xl font-bold text-[#ff79c6]">💻 Code Snippets</h2>
-                <p>Click the tabs to switch between different source codes</p>
-                <div class="flex gap-4 mt-6">
-                    <button class="tab-btn px-4 py-2 rounded bg-[#44475a] text-white hover:bg-[#6272a4]" data-target="terminal">
-                        Terminal Image Loader | C
-                    </button>
-                    <button class="tab-btn px-4 py-2 rounded bg-[#44475a] text-white hover:bg-[#6272a4]" data-target="editor">
-                        Lightweight Text Editor | Python
-                    </button>
-                </div>
-
-                <div class="code-container rounded-lg p-6 mt-4 overflow-auto">
-                
-                    <div class="code-tab" id="terminal">
-                        <h3>Terminal Image Loader | C</h3>
-                        <p>A small school project whereby you can load any jpg/png into the terminal.</p>
-                        <pre><code class="language-c">
-#include <assert.h>
-#include <stdio.h>
-#include <math.h>
-#define STB_IMAGE_IMPLEMENTATION
-#include "./resources/stb_image.h"
-#define STB_IMAGE_RESIZE_IMPLEMENTATION
-#include "./resources/stb_image_resize.h"
-#include "./resources/maps.h"
-
-#define DEFAULT_WIDTH 32
-
-typedef enum {
-    DIST_HSL,
-    DIST_RGB
-} EnumDistance;
-
-static int distance256(int table256[256][3], int i, int a, int b, int c)
-{
-    int da = a - table256[i][0];
-    int db = b - table256[i][1];
-    int dc = c - table256[i][2];
-    return da*da + db*db + dc*dc;
-}
-
-static int find_ansi_index(int table256[256][3], int a, int b, int c)
-{
-    int index = 0;
-    for (int i = 0; i < 256; ++i) {
-        if (distance256(table256, i, a, b, c) < distance256(table256, index, a, b, c)) {
-            index = i;
-        }
-    }
-    return index;
-}
-
-
-const char* ParseArgs(int* argc, char** argv[])
-{
-    assert(*argc > 0);
-    const char* result = **argv;
-    *argc -= 1;
-    *argv += 1;
-    return result;
-}
-
-int main(int argc, char* argv[])
-{
-    const char* identifier = ParseArgs(&argc, &argv);
-    EnumDistance distEnum = DIST_RGB;
-
-    //step through the passed args
-    while (argc > 0) {
-
-        const char* flag = ParseArgs(&argc, &argv);
-        if (strcmp(flag, "-hsl") ==  0) {
-            distEnum = DIST_HSL;
-        } else {
-            const char* pathToFile = flag;
-            int width, height;
-            uint32_t* pixels = (uint32_t*)stbi_load(pathToFile, &width, &height, NULL, 4);
-
-            if (pixels == NULL) {
-                fprintf(stderr, "Could not read file: %s\n", pathToFile);
-                continue;
-            }
-            //Scale the image to fit into our console
-            int resized_height = height*DEFAULT_WIDTH/width;
-            uint32_t* resized_pixels = malloc(sizeof(uint32_t)*DEFAULT_WIDTH*resized_height); //alloc memory for our pixels
-            if (resized_pixels == NULL) {
-                fprintf(stderr, "Could not allocate memory for resized image\n");
-                exit(1);
-            }
-
-            int result = stbir_resize_uint8(
-                (const unsigned char*)pixels, width, height, sizeof(uint32_t)*width,
-                (unsigned char*)resized_pixels, DEFAULT_WIDTH, resized_height, sizeof(uint32_t)*DEFAULT_WIDTH,
-                4);
-
-            printf("%d", result);
-            
-            for (int y = 0; y < resized_height; ++y) {
-                for (int x = 0; x < DEFAULT_WIDTH; ++x) {
-                    uint32_t pixel = resized_pixels[y*DEFAULT_WIDTH + x];
-                    int r = (pixel>>8*0)&0xFF;
-                    int g = (pixel>>8*1)&0xFF;
-                    int b = (pixel>>8*2)&0xFF;
-                    int a = (pixel>>8*3)&0xFF;
-                    //convert
-                    r = a*r/255; 
-                    g = a*g/255;
-                    b = a*b/255;
-                    //To-Do: Add support for HSL
-                    printf("\e[48;5;%dm  ", find_ansi_index(rgb256, r, g, b));
-                }
-                printf("\e[0m\n");
-            }
-            printf("\e[0m\n");
-            free(resized_pixels);
-            stbi_image_free(pixels);
-        }
-    }
-    return 0;
-}
-                        </code></pre>
-                    </div>
-
-                    <div class="code-tab hidden" id="editor">
-                        <h3>Lightweight Text Editor | Python</h3>
-                        <p>Light-weight and performance friendly text-editor</p>
-                        <pre><code class="language-python">
-from tkinter import *
-from tkinter.ttk import *
-import tkinter.filedialog as tk_file_dialog
-import tkinter.font as tk_font
-import os
-import platform
-import themes
-import syntax
-
-DEFAULT_EDITOR_NAME = "kite-text-editor"
-DEFAULT_GEOMETRY = "800x600"
-START_TEXT = "print('Hello World!')"
-
-class LineCounter(Canvas):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.text_widget = None
-        
-    def attach_widget(self, text_widget):
-        self.text_widget = text_widget
-
-    def update(self, *args):
-        self.delete("all")
-        index = self.text_widget.index("@0,0")
-        while True:
-            line = self.text_widget.dlineinfo(index)
-            if line is None: 
-                break
-            pos = line[1]
-            number = str(index).split(".")[0]
-            self.create_text(10, pos, anchor="nw", text=number, fill="white")
-            index = self.text_widget.index("%s+1line" % index)
-
-class TextWidget(Text):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        
-        self.insert(1.0, START_TEXT)
-
-        self._origin = self._w + "_orig"
-        self.tk.call("rename", self._w, self._origin)
-        self.tk.createcommand(self._w, self._proxy)
-        
-    def _proxy(self, *args):
-        cmd = (self._origin,) + args
-        result = self.tk.call(cmd)
-
-        if (args[0] in ("insert", "replace", "delete") or
-            args[0:3] == ("mark", "set", "insert") or
-            args[0:2] == ("xview", "moveto") or
-            args[0:2] == ("xview", "scroll") or
-            args[0:2] == ("yview", "moveto") or
-            args[0:2] == ("yview", "scroll") 
-        ):
-            self.event_generate("<<Change>>", when="tail")
-
-        return result
-
-class Window(Frame):
-    def save_as(self):
-        self.file_name = None
-        self.file = tk_file_dialog.asksaveasfile(filetypes=[('Text', '*.txt'), ('Python', '*.py')], confirmoverwrite=True, defaultextension=".txt")
-        if self.file is None:
-            return 
-        else:
-            self.file_name = self.file.name
-            base = os.path.basename(self.file_name)
-            self.root_ref.title(self.name + " - '{}'".format(str(base)))
-        
-        file_text = str(self.text_widget.get(1.0, END))
-        self.file.write(file_text)
-        self.file.close()
-
-    def save(self):
-        try:
-            if self.file_name is not None and self.file is not None:
-                with open (self.file, 'r+') as file:
-                    data = file.read()
-                    file.seek(0)
-                    file.write(str(main_text.get(1.0, END)))
-                    file.truncate()
-            elif self.open_file is not None:
-                with open (self.open_file, 'r+') as file:
-                    data = file.read()
-                    file.seek(0)
-                    file.write(str(main_text.get(1.0, END)))
-                    file.truncate()
-        except AttributeError:
-            self.save_as()
-
-    def _open(self):
-        self.open_file = tk_file_dialog.askopenfile(mode = "r", title = "Open A Text File")
-        if self.open_file is not None:
-            content = self.open_file.read()
-            self.text_widget.delete(0.0, END)
-            self.text_widget.insert(END, content) 
-
-
-    def exit_editor(self):
-        self.root_ref.destroy()
-
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        
-        #window properties
-        self.name = DEFAULT_EDITOR_NAME
-        self.geometry = DEFAULT_GEOMETRY
-        self.icon = PhotoImage(file="assets/icon.png")
-        self.root_ref = args[0]
-        
-
-        #objects
-        self.font = tk_font.Font(family=themes.DEFAULT["font"], size=themes.DEFAULT["font_size"])
-        self.text_widget = TextWidget(self, width=800, height=600, wrap=WORD, font=self.font, bg=themes.DEFAULT["background"], fg=themes.DEFAULT["foreground"], insertbackground=themes.DEFAULT["foreground"], highlightthickness=0, relief=SOLID, padx=4)
-        self.scroll_bar = Scrollbar(self, orient="vertical", command=self.text_widget.yview)
-        self.scroll_bar.pack()
-        self.text_widget.configure(yscrollcommand=self.scroll_bar.set)
-        self.lexer = syntax.Lexer(self.text_widget)
-        self.lexer.scan()
-        self.line_counter = LineCounter(self, width=40, bg=self.lexer.style.background_color, bd=0)
-        self.line_counter.attach_widget(self.text_widget)
-        self.line_counter.pack()
-       
-
-        self.menu_bar = Menu(self)
-
-        #topbar-objects
-        self.tabs = Menu(self.menu_bar, tearoff=0)
-        self.tabs.add_command(label="Save File As", command=self.save_as)
-        self.tabs.add_command(label="Save File", command=self.save)
-        self.tabs.add_command(label="Open", command=self._open)
-        self.tabs.add_separator()
-        self.tabs.add_command(label="Exit", command=self.exit_editor)
-
-        self.syntax = Menu(self.menu_bar, tearoff=0)
-        for idx in self.lexer.list:
-            self.syntax.add_command(label=idx, command=None)
-
-        self.menu_bar.add_cascade(label="File", menu=self.tabs)
-        #self.menu_bar.add_cascade(label="Syntax", menu=self.syntax)
-
-        #bindings
-        self.text_widget.bind("<<Change>>", self._on_change)
-        self.text_widget.bind("<Configure>", self._on_change)
-        self.text_widget.bind("<KeyRelease>", lambda event: self.lexer.scan())
-
-    def _on_change(self, event):
-        self.line_counter.update()
-                        </code></pre>
-                    </div>
-                </div>
-            </div>
-        </section>
+      <article class="card" data-domain="web">
+        <div class="card__top"><span class="tag tag--web"><span class="tag__key">[web]</span> internal</span><span class="label muted"><span class="dot"></span>shipped</span></div>
+        <h3 class="card__title">Ancora</h3>
+        <p class="card__sum">LAN-only file management system that replaced paper filing for sensitive client records.</p>
+        <div class="tags"><span class="tag">react</span><span class="tag">node.js</span><span class="tag">postgresql</span></div>
+        <div class="card__foot"><span>proprietary · no source</span><span class="card__links"></span></div>
+      </article>
 
     </div>
-    <script src="script.js"></script>
+  </section>
+
+  <!-- ============ 03 // MINECRAFT ============ -->
+  <!-- Plugin entries live in script.js → PLUGINS. Add the YouTube id there when a video is up. -->
+  <section id="minecraft">
+    <header class="sh"><h2 class="sh__title"><span class="sh__idx">03</span> <span class="sh__sep">//</span> minecraft</h2><span class="sh__aside label">paper plugins</span></header>
+    <div class="show">
+      <div>
+        <div id="mc-player"></div>
+        <div class="show__detail">
+          <div class="tags" id="mc-tags"></div>
+          <h3 class="show__title" id="mc-title"></h3>
+          <p class="muted" id="mc-sum"></p>
+          <div class="btn-row" id="mc-links"></div>
+        </div>
+      </div>
+      <ol class="show__list" id="mc-list" role="tablist" aria-label="Minecraft plugins"></ol>
+    </div>
+  </section>
+
+  <!-- ============ 04 // ROBLOX ============ -->
+  <section id="roblox">
+    <header class="sh"><h2 class="sh__title"><span class="sh__idx">04</span> <span class="sh__sep">//</span> roblox</h2><a class="sh__aside label" href="https://www.roblox.com/users/5281751970/profile" target="_blank" rel="noopener">roblox profile ↗</a></header>
+    <div class="vgrid">
+      <article class="vcard"><div class="video" data-yt="1sZEVW634mc" data-title="Bow and Arrow Projectile System"></div><span class="label muted">bushido</span><h3 class="vcard__title">Bow and Arrow Projectile System</h3><p class="vcard__sum">Projectile flight and hit detection for a bow.</p></article>
+      <article class="vcard"><div class="video" data-yt="D9uwXdZsQt8" data-title="Customization System"></div><span class="label muted">bushido</span><h3 class="vcard__title">Customization System</h3><p class="vcard__sum">Character customization.</p></article>
+      <article class="vcard"><div class="video" data-yt="hMq8feQQpd0" data-title="Shinobi Wall Run"></div><span class="label muted">bushido</span><h3 class="vcard__title">Shinobi Wall Run</h3><p class="vcard__sum">Wall-run movement.</p></article>
+      <article class="vcard"><div class="video" data-yt="lTbOrLoj4iw" data-title="Stud-RNG Simulator"></div><span class="label muted">stud-rng</span><h3 class="vcard__title">Stud-RNG Simulator</h3><p class="vcard__sum">RNG simulator: collect studs, upgrade your plot and machines.</p></article>
+      <article class="vcard"><div class="video" data-yt="HJFbJcsn5hs" data-title="Ro-Schedule"></div><span class="label muted">ro-schedule</span><h3 class="vcard__title">Ro-Schedule</h3><p class="vcard__sum">Behavior trees, ECS architecture and Fusion UI.</p></article>
+      <article class="vcard"><div class="video" data-yt="kAFdvoHFLgI" data-title="Basketball Shooting Mechanics"></div><span class="label muted">ro-hoop</span><h3 class="vcard__title">Basketball Shooting Mechanics</h3><p class="vcard__sum">Shooting mechanics test demo.</p></article>
+      <article class="vcard"><div class="video" data-yt="mzVvsjzUMJY" data-title="Combat Showcase"></div><span class="label muted">demo</span><h3 class="vcard__title">Combat Showcase</h3><p class="vcard__sum">Anime combat system demonstration.</p></article>
+      <article class="vcard"><div class="video" data-yt="p5CpvkZIVE8" data-title="Chat Relay"></div><span class="label muted">demo</span><h3 class="vcard__title">Chat Relay</h3><p class="vcard__sum">Discord to Roblox chat relay system.</p></article>
+      <article class="vcard"><div class="video" data-yt="TnqcRvDEsFE" data-title="Wall Walking Physics"></div><span class="label muted">demo</span><h3 class="vcard__title">Wall Walking Physics</h3><p class="vcard__sum">Prototyped wall-walking demo.</p></article>
+    </div>
+  </section>
+
+  <!-- ============ WRITE-UPS (hidden until there are real ones) ============
+       Uncomment this block when there are real write-ups, add a nav link, and renumber the sections after it.
+       Never name a client, IP, domain or employee.
+  <section id="writeups">
+    <header class="sh"><h2 class="sh__title"><span class="sh__idx">05</span> <span class="sh__sep">//</span> write-ups</h2><span class="sh__aside label">sanitized</span></header>
+    <div class="find"><span class="sev sev--high">high</span><div><p class="find__title">Title: the impact, in plain words</p><span class="find__meta">[net] · internal assessment · sanitized</span></div><a href="#">read →</a></div>
+  </section>
+  -->
+
+  <!-- ============ 05 // LOG ============ -->
+  <section id="log">
+    <header class="sh"><h2 class="sh__title"><span class="sh__idx">05</span> <span class="sh__sep">//</span> log</h2><a class="sh__aside label" href="resume/RyanSealesResume.html">full résumé ↗</a></header>
+    <ol class="log">
+      <li class="log__item"><span class="log__when">sep 2025 – may 2026</span><div><h3 class="log__role">Assistant Lead Programmer <span class="log__org">· Jakunta Inc</span></h3><p class="log__body">Custom framework to streamline game development; gameplay mechanics; debugging and performance work on multi-user systems.</p></div></li>
+      <li class="log__item"><span class="log__when">jul – aug 2025</span><div><h3 class="log__role">Lead Programmer <span class="log__org">· Lotus Factory</span></h3><p class="log__body">Systems from design docs with Knit and Fusion; RNG mechanics with batched data-store writes.</p></div></li>
+      <li class="log__item"><span class="log__when">jan 2024 – jun 2025</span><div><h3 class="log__role">IT Clerk <span class="log__org">· Kim George &amp; Associates</span></h3><p class="log__body">Configured and secured the internal network; built in-house data-management systems with a normalized database behind an internal web UI.</p></div></li>
+      <li class="log__item log__item--now"><span class="log__when">in progress</span><div><h3 class="log__role">B.Sc. Information Technology <span class="log__org">· St. George's University</span></h3><p class="log__body">Networking, database design, low-level systems programming.</p></div></li>
+    </ol>
+  </section>
+
+  <!-- ============ 06 // CONTACT ============ -->
+  <section id="contact">
+    <header class="sh"><h2 class="sh__title"><span class="sh__idx">06</span> <span class="sh__sep">//</span> contact</h2></header>
+    <div class="contact">
+      <h3>Need a network tested or a plugin built?</h3>
+      <div class="links">
+        <a href="mailto:ntse7en@proton.me">email · ntse7en@proton.me <span>→</span></a>
+        <a href="https://github.com/glocation87" target="_blank" rel="noopener">github · glocation87 <span>↗</span></a>
+        <a href="https://discord.com/users/cryphowns" target="_blank" rel="noopener">discord · cryphowns <span>↗</span></a>
+        <a href="https://www.roblox.com/users/5281751970/profile" target="_blank" rel="noopener">roblox <span>↗</span></a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer label"><span>~/seven · ryan seales</span><span>st. george's, grenada</span></footer>
+</main>
+
+<script src="script.js"></script>
 </body>
 </html>

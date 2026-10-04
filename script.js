@@ -1,174 +1,157 @@
-// Main Scroll/Navigation
-const sections = document.querySelectorAll("section");
-const navLinks = document.querySelectorAll(".nav-link");
-const topbar = document.getElementById("top-socials");
-const scroll = new LocomotiveScroll({
-  el: document.querySelector('[data-scroll-container]'),
-  smooth: true,
-  multiplier: 0.8,
-  inertia: 1, 
-});
+// ~/seven — portfolio behaviour. No libraries.
 
+// ---------------------------------------------------------------
+// Minecraft plugins — edit this list. `yt` is the YouTube video id
+// (the part after watch?v=). Leave it "" until the video is up.
+// ---------------------------------------------------------------
+const PLUGINS = [
+  {
+    name: "Last Man Standing",
+    kind: "minigame",
+    short: "Minigame: hub, queue, arena.",
+    summary: "A Paper minigame with a hub and arena rounds. Last player alive wins.",
+    stack: ["java", "paper"],
+    yt: "",
+    links: [{ label: "lms-maps repo", href: "https://github.com/glocation87/lms-maps" }],
+  },
+  {
+    name: "Plugin two", // TODO(ryan)
+    kind: "plugin",
+    short: "One line on what it does.",
+    summary: "One sentence on what it does for players or server owners.",
+    stack: ["java", "paper"],
+    yt: "",
+    links: [],
+  },
+  {
+    name: "Plugin three", // TODO(ryan)
+    kind: "plugin",
+    short: "One line on what it does.",
+    summary: "One sentence on what it does for players or server owners.",
+    stack: ["java", "paper"],
+    yt: "",
+    links: [],
+  },
+];
 
-scroll.on("scroll", (args) => {
-    if (args.scroll.y <= 40) {
-        topbar.style.transform = "translateY(0)";
-        topbar.style.opacity = "1";
-    } else {
-        topbar.style.transform = "translateY(-100%)";
-        topbar.style.opacity = "0";
+// ---------- YouTube facade: poster first, player only on click ----------
+function mountVideo(el, id, title) {
+  el.innerHTML = "";
+  el.classList.remove("is-playing");
+  el.removeAttribute("data-pending");
+  if (!id) {
+    el.setAttribute("data-pending", "");
+    el.innerHTML = '<span class="video__ph">video coming soon</span>';
+    el.removeAttribute("role"); el.removeAttribute("tabindex"); el.removeAttribute("aria-label");
+    el.onclick = el.onkeydown = null;
+    return;
   }
-
-  let current = "";
-
-  sections.forEach(section => {
-    const sectionTop = section.getBoundingClientRect().top + scroll.scroll.instance.scroll.y;
-    const sectionHeight = section.clientHeight;
-
-    if (args.scroll.y >= sectionTop - sectionHeight / 6) {
-      current = section.getAttribute("id");
-    }
-  });
-
-  navLinks.forEach(link => {
-    link.classList.remove("bg-[#44475a]", "text-[#50fa7b]");
-  });
-
-  const activeLink = document.querySelector(`.nav-link[href="#${current}"]`);
-  if (activeLink) {
-    activeLink.classList.add("bg-[#44475a]", "text-[#50fa7b]");
-  }
-});
-
-navLinks.forEach(link => {
-  link.addEventListener("click", (e) => {
-    e.preventDefault();
-    const targetId = link.getAttribute("href").slice(1); 
-    if (targetId == "top-socials") {
-      scroll.scrollTo(0);
-    } else {
-      scroll.scrollTo(document.getElementById(targetId));
-    }
-    
-  });
-});
-
-window.addEventListener("DOMContentLoaded", () => {
-    const aboutSection = document.getElementById("about");
-    if (aboutSection) {
-        scroll.scrollTo(aboutSection);
-    }
-});
-
-//Particle Effects
-const canvas = document.createElement("canvas");
-canvas.id = "particle-bg";
-canvas.classList.add("fixed", "top-0", "left-0", "w-full", "h-full", "z-0");
-document.body.prepend(canvas);
-
-const ctx = canvas.getContext("2d");
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-const particles = [];
-const particleCount = 80;
-const maxDistance = 100;
-let mouse = { x: null, y: null };
-
-window.addEventListener("mousemove", e => {
-  mouse.x = e.clientX;
-  mouse.y = e.clientY;
-});
-
-window.addEventListener("resize", () => {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-});
-
-class Particle {
-  constructor() {
-    this.x = Math.random() * canvas.width;
-    this.y = Math.random() * canvas.height;
-    this.vx = (Math.random() - 0.5) * 0.5;
-    this.vy = (Math.random() - 0.5) * 0.5;
-    this.size = Math.random() * 2 + 1;
-  }
-  draw() {
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.size, 0, Math.PI*2);
-    ctx.fillStyle = "rgba(255, 255, 255, 0.42)";
-    ctx.fill();
-  }
-  update() {
-    this.x += this.vx;
-    this.y += this.vy;
-
-    if(this.x < 0 || this.x > canvas.width) this.vx *= -1;
-    if(this.y < 0 || this.y > canvas.height) this.vy *= -1;
-  }
+  const img = document.createElement("img");
+  img.src = `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
+  img.alt = "";
+  img.loading = "lazy";
+  img.onerror = () => img.remove(); // no thumbnail → plain poster, not a broken-image icon
+  const play = document.createElement("span");
+  play.className = "video__play";
+  play.textContent = "play";
+  el.append(img, play);
+  el.setAttribute("role", "button");
+  el.setAttribute("tabindex", "0");
+  el.setAttribute("aria-label", `Play video: ${title}`);
+  const start = () => {
+    if (el.classList.contains("is-playing")) return;
+    el.classList.add("is-playing");
+    el.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0" title="${title}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+    el.removeAttribute("role"); el.removeAttribute("tabindex");
+  };
+  el.onclick = start;
+  el.onkeydown = (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); start(); } };
 }
 
-for(let i=0; i<particleCount; i++) particles.push(new Particle());
+document.querySelectorAll(".video[data-yt]").forEach((el) => mountVideo(el, el.dataset.yt, el.dataset.title || "video"));
 
-function connectParticles() {
-  for(let a=0; a<particles.length; a++) {
-    for(let b=a; b<particles.length; b++) {
-      let dx = particles[a].x - particles[b].x;
-      let dy = particles[a].y - particles[b].y;
-      let distance = Math.sqrt(dx*dx + dy*dy);
-      if(distance < maxDistance) {
-        ctx.beginPath();
-        ctx.strokeStyle = `rgba(255,255,255,${1 - distance/maxDistance})`;
-        ctx.lineWidth = 0.4;
-        ctx.moveTo(particles[a].x, particles[a].y);
-        ctx.lineTo(particles[b].x, particles[b].y);
-        ctx.stroke();
-      }
-      if(mouse.x && mouse.y) {
-        let mdx = particles[a].x - mouse.x;
-        let mdy = particles[a].y - mouse.y;
-        let mdistance = Math.sqrt(mdx*mdx + mdy*mdy);
-        if(mdistance < maxDistance) {
-          ctx.beginPath();
-          ctx.strokeStyle = `rgba(255,255,255,${1 - mdistance/maxDistance})`;
-          ctx.lineWidth = 0.4;
-          ctx.moveTo(particles[a].x, particles[a].y);
-          ctx.lineTo(mouse.x, mouse.y);
-          ctx.stroke();
-        }
-      }
-    }
+// ---------- Minecraft showcase ----------
+(function () {
+  const list = document.getElementById("mc-list");
+  if (!list) return;
+  const player = document.createElement("div");
+  player.className = "video";
+  document.getElementById("mc-player").append(player);
+
+  const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+  function select(i) {
+    const p = PLUGINS[i];
+    list.querySelectorAll(".show__item").forEach((b, j) => b.setAttribute("aria-selected", String(i === j)));
+    mountVideo(player, p.yt, p.name);
+    document.getElementById("mc-title").textContent = p.name;
+    document.getElementById("mc-sum").textContent = p.summary;
+    document.getElementById("mc-tags").innerHTML =
+      `<span class="tag tag--mc"><span class="tag__key">[mc]</span> ${esc(p.kind)}</span>` +
+      p.stack.map((s) => `<span class="tag">${esc(s)}</span>`).join("");
+    const links = p.links.map((l, k) =>
+      `<a class="btn ${k === 0 ? "btn--primary" : "btn--ghost"} btn--sm" href="${esc(l.href)}" target="_blank" rel="noopener">${esc(l.label)} <span class="btn__glyph">↗</span></a>`);
+    if (p.yt) links.push(`<a class="btn btn--ghost btn--sm" href="https://www.youtube.com/watch?v=${esc(p.yt)}" target="_blank" rel="noopener">watch on youtube <span class="btn__glyph">↗</span></a>`);
+    document.getElementById("mc-links").innerHTML = links.join("");
   }
-}
 
-function animateParticles() {
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  particles.forEach(p => { p.update(); p.draw(); });
-  connectParticles();
-  requestAnimationFrame(animateParticles);
-}
+  list.innerHTML = PLUGINS.map((p, i) => `
+    <li><button class="show__item" type="button" role="tab" aria-selected="false" data-i="${i}">
+      <span class="show__num">${String(i + 1).padStart(2, "0")}</span>
+      <span><span class="show__name">${esc(p.name)}</span><span class="show__sum">${esc(p.short)}</span></span>
+    </button></li>`).join("");
+  list.addEventListener("click", (e) => {
+    const b = e.target.closest(".show__item");
+    if (b) select(+b.dataset.i);
+  });
+  select(0);
+})();
 
-animateParticles();
-
-const socials = document.querySelectorAll(".social-link");
-
-
-const tabs = document.querySelectorAll('.tab-btn');
-  const codeTabs = document.querySelectorAll('.code-tab');
-
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      // Hide all tabs
-      codeTabs.forEach(ct => ct.classList.add('hidden'));
-      // Show the selected tab
-      const target = document.getElementById(tab.dataset.target);
-      target.classList.remove('hidden');
-
-      // Optional: highlight active button
-      tabs.forEach(t => t.classList.remove('bg-[#6272a4]'));
-      tab.classList.add('bg-[#6272a4]');
-
-      scroll.update()
+// ---------- Project filters ----------
+document.querySelectorAll("[data-filter]").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const f = btn.dataset.filter;
+    document.querySelectorAll("[data-filter]").forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
+    document.querySelectorAll("#project-grid .card").forEach((c) => {
+      c.hidden = f !== "all" && c.dataset.domain !== f;
     });
   });
+});
+
+// ---------- Active nav link while scrolling ----------
+(function () {
+  const links = [...document.querySelectorAll(".nav__link")];
+  const byId = new Map(links.map((a) => [a.getAttribute("href").slice(1), a]));
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((en) => {
+      if (!en.isIntersecting) return;
+      links.forEach((a) => a.removeAttribute("aria-current"));
+      const a = byId.get(en.target.id);
+      if (a) a.setAttribute("aria-current", "true");
+    });
+  }, { rootMargin: "-40% 0px -55% 0px" });
+  byId.forEach((_, id) => { const s = document.getElementById(id); if (s) obs.observe(s); });
+})();
+
+// ---------- Mobile menu ----------
+(function () {
+  const btn = document.querySelector(".nav__menu");
+  const nav = document.getElementById("nav-links");
+  if (!btn || !nav) return;
+  btn.addEventListener("click", () => {
+    const open = nav.classList.toggle("is-open");
+    btn.setAttribute("aria-expanded", String(open));
+  });
+  nav.addEventListener("click", (e) => {
+    if (e.target.closest("a")) { nav.classList.remove("is-open"); btn.setAttribute("aria-expanded", "false"); }
+  });
+})();
+
+// ---------- Theme toggle (remembers choice; default follows the system) ----------
+document.querySelector(".nav__theme")?.addEventListener("click", () => {
+  const root = document.documentElement;
+  const current = root.dataset.theme || (matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+  const next = current === "dark" ? "light" : "dark";
+  root.dataset.theme = next;
+  try { localStorage.setItem("theme", next); } catch (e) {}
+});
