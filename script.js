@@ -6,13 +6,13 @@
 // ---------------------------------------------------------------
 const PLUGINS = [
   {
-    name: "Last Man Standing",
-    kind: "minigame",
-    short: "Minigame: hub, queue, arena.",
-    summary: "A Paper minigame with a hub and arena rounds. Last player alive wins.",
+    name: "Nature7 Engine",
+    kind: "plugin",
+    short: "Modular Minigame Engine for Paper 26.2/26.3",
+    summary: "A modular minigame engine for Paper 26.2/26.3.",
     stack: ["java", "paper"],
-    yt: "",
-    links: [{ label: "lms-maps repo", href: "https://github.com/glocation87/lms-maps" }],
+    yt: "FOdC2XujEIE",
+    links: [{ label: "Nature7 repo", href: "https://github.com/glocation87/Nature7" }],
   },
   {
     name: "Plugin two", // TODO(ryan)
