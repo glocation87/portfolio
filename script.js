@@ -15,13 +15,13 @@ const PLUGINS = [
     links: [{ label: "Nature7 repo", href: "https://github.com/glocation87/Nature7" }],
   },
   {
-    name: "Plugin two", // TODO(ryan)
+    name: "Combat7",
     kind: "plugin",
-    short: "One line on what it does.",
-    summary: "One sentence on what it does for players or server owners.",
+    short: "Improve PvP with MMORPG-style combat.",
+    summary: "Improves PvP with MMORPG-style combat.",
     stack: ["java", "paper"],
-    yt: "",
-    links: [],
+    yt: "MIGFlzmHVoo",
+    links: [{ label: "Combat7 repo", href: "https://github.com/glocation87/Combat7" }],
   },
   {
     name: "Plugin three", // TODO(ryan)
