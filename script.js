@@ -23,15 +23,6 @@ const PLUGINS = [
     yt: "MIGFlzmHVoo",
     links: [{ label: "Combat7 repo", href: "https://github.com/glocation87/Combat7" }],
   },
-  {
-    name: "Plugin three", // TODO(ryan)
-    kind: "plugin",
-    short: "One line on what it does.",
-    summary: "One sentence on what it does for players or server owners.",
-    stack: ["java", "paper"],
-    yt: "",
-    links: [],
-  },
 ];
 
 // ---------- YouTube facade: poster first, player only on click ----------
